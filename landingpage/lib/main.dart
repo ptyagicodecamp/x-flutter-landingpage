@@ -1,4 +1,5 @@
-import 'package:flutter/material.dart';
+//Note: This needs to be changed to flutter package for Native apps
+import 'package:flutter_web/material.dart';
 
 void main() => runApp(MyApp());
 
