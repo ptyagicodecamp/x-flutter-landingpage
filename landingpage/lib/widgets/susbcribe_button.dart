@@ -1,6 +1,7 @@
 import 'package:flutter_web/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/strings.dart';
+import 'package:landingpage/utils/responsive_widget.dart';
 
 class SubscribeButton extends StatelessWidget {
   var emailImage = "assets/email.png";
@@ -27,29 +28,71 @@ class SubscribeButton extends StatelessWidget {
           child: InkWell(
             onTap: () {}, //TODO
             child: Center(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: <Widget>[
-                  Text(
-                    Strings.subscribeButton,
-                    style: TextStyle(
-                        color: MyColors.white1, fontSize: 16, letterSpacing: 1),
-                  ),
-                  SizedBox(
-                    width: 8,
-                  ),
-                  Image.network(
-                    emailImage,
-                    color: MyColors.white1,
-                    width: 20,
-                    height: 20,
-                  )
-                ],
-              ),
+              child: buildButton(context),
             ),
           ),
         ),
       ),
+    );
+  }
+
+
+  Widget buildButton(BuildContext context) {
+    if (ResponsiveWidget.isSmallScreen(context))
+      return buildSmallButton(context);
+    else
+      return buildLargeButton(context);
+  }
+
+  Widget buildLargeButton(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Text(
+          Strings.subscribeButton,
+          style: TextStyle(
+              color: MyColors.white1,
+              fontSize: ResponsiveWidget.isSmallScreen(context)
+                  ? 12
+                  : ResponsiveWidget.isMediumScreen(context)
+                  ? 12
+                  : 16,
+              letterSpacing: 1),
+        ),
+        SizedBox(
+          width: ResponsiveWidget.isSmallScreen(context)
+              ? 4
+              : ResponsiveWidget.isMediumScreen(context) ? 6 : 8,
+        ),
+        Image.network(
+          emailImage,
+          color: MyColors.white1,
+          width: ResponsiveWidget.isSmallScreen(context)
+              ? 12
+              : ResponsiveWidget.isMediumScreen(context) ? 12 : 20,
+          height: ResponsiveWidget.isSmallScreen(context)
+              ? 12
+              : ResponsiveWidget.isMediumScreen(context) ? 12 : 20,
+        )
+      ],
+    );
+  }
+
+  Widget buildSmallButton(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: <Widget>[
+        Image.network(
+          emailImage,
+          color: MyColors.white1,
+          width: ResponsiveWidget.isSmallScreen(context)
+              ? 12
+              : ResponsiveWidget.isMediumScreen(context) ? 12 : 20,
+          height: ResponsiveWidget.isSmallScreen(context)
+              ? 12
+              : ResponsiveWidget.isMediumScreen(context) ? 12 : 20,
+        )
+      ],
     );
   }
 }
