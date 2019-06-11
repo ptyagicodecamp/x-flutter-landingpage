@@ -1,29 +1,33 @@
 import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/strings.dart';
+import 'package:landingpage/utils/responsive_widget.dart';
 
 class Header extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: EdgeInsets.symmetric(horizontal: 45, vertical: 38),
-      child: buildHeader(),
+      child: buildHeader(context),
     );
   }
 
-  Widget buildHeader() {
+  Widget buildHeader(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[buildLogo(), buildHeaderLinks()],
+      children: <Widget>[buildLogo(), buildHeaderLinks(context)],
     );
   }
 
   //Builds navigation links at the right top of landing page
-  Widget buildHeaderLinks() {
-    return Row(
-      mainAxisAlignment: MainAxisAlignment.spaceAround,
-      children: getLinksListing()..add(buildLoginButton()),
-    );
+  Widget buildHeaderLinks(BuildContext context) {
+    if (!ResponsiveWidget.isSmallScreen(context))
+      return Row(
+        mainAxisAlignment: MainAxisAlignment.spaceAround,
+        children: getLinksListing()..add(buildLoginButton()),
+      );
+    else
+      return Image.network("assets/menu.png", width: 25, height: 25);
   }
 
   //Builds navigation list for header
