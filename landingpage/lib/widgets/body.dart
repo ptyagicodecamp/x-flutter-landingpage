@@ -33,7 +33,7 @@ class LargeScreen extends StatelessWidget {
     return FractionallySizedBox(
       alignment: Alignment.centerRight, //to keep images aligned to right
       widthFactor: .6, //covers about 60% of the screen width
-      child: Image.network(
+      child: Image.asset(
         backgroundImage,
         scale: .85,
       ),
@@ -121,7 +121,7 @@ class SmallScreen extends StatelessWidget {
               height: 30,
             ),
             Center(
-              child: Image.network(
+              child: Image.asset(
                 backgroundImage,
                 scale: 1,
               ),

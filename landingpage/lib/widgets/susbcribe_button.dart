@@ -82,7 +82,7 @@ class SubscribeButton extends StatelessWidget {
     return Row(
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
-        Image.network(
+        Image.asset(
           emailImage,
           color: MyColors.white1,
           width: ResponsiveWidget.isSmallScreen(context)

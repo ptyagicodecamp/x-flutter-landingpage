@@ -27,7 +27,7 @@ class Header extends StatelessWidget {
         children: getLinksListing()..add(buildLoginButton()),
       );
     else
-      return Image.network("assets/menu.png", width: 25, height: 25);
+      return Image.asset("assets/menu.png", width: 25, height: 25);
   }
 
   //Builds navigation list for header
