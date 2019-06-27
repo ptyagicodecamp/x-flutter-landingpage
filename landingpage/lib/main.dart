@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter to fly !',
-      theme: MyAppThemes.AppThemeGreen(context),
+      theme: MyAppThemes.AppThemePurple(context),
       home: MyHomePage(),
     );
   }
