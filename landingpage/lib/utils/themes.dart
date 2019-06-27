@@ -11,9 +11,6 @@ class MyAppThemes {
       secondaryHeaderColor: MyColors.blue2,
       accentColor: MyColors.blue3,
 
-      // I used custom font for the default font family.
-      fontFamily: 'Indie Flower',
-
       textTheme: getDefaultTextTheme(context),
     );
   }
@@ -47,7 +44,7 @@ class MyAppThemes {
     return TextTheme(
       headline: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
       title: TextStyle(fontSize: 20.0, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
-      body1: TextStyle(fontSize: 16.0, fontFamily: 'Roboto'),
+      body1: TextStyle(fontSize: 26.0,  fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
     );
   }
 
