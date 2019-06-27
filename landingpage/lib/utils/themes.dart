@@ -11,7 +11,7 @@ class MyAppThemes {
       secondaryHeaderColor: MyColors.blue2,
       accentColor: MyColors.blue3,
 
-      // Here goes the default font family.
+      // I used custom font for the default font family.
       fontFamily: 'Indie Flower',
 
       textTheme: getDefaultTextTheme(context),
@@ -22,12 +22,9 @@ class MyAppThemes {
     return ThemeData(
       // Define the default brightness and colors for the overall app.
       brightness: Brightness.light,
-      primaryColor: Colors.green[900],
-      secondaryHeaderColor: Colors.green[600],
-      accentColor: Colors.greenAccent,
-
-      // Here goes the default font family.
-      fontFamily: 'Roboto',
+      primaryColor: MyColors.green1,
+      secondaryHeaderColor: MyColors.green2,
+      accentColor: MyColors.green3,
 
       textTheme: getItalicTitleTextTheme(context),
     );
@@ -37,12 +34,9 @@ class MyAppThemes {
     return ThemeData(
       // Define the default brightness and colors for the overall app.
       brightness: Brightness.light,
-      primaryColor: Colors.purple[800],
-      secondaryHeaderColor: Colors.purple[300],
-      accentColor: Colors.purpleAccent,
-
-      // Here goes the default font family.
-      fontFamily: 'Roboto',
+      primaryColor: MyColors.purple1,
+      secondaryHeaderColor: MyColors.purple2,
+      accentColor: MyColors.purple3,
 
       textTheme: getDefaultTextTheme(context),
     );

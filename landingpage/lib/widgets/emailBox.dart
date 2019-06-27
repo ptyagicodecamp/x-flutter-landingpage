@@ -36,12 +36,13 @@ class EmailBox extends StatelessWidget {
               ),
               Expanded(
                   flex: 2,
-                  child: //Example of applying local themes to a certain widget in app
+                  child:
+                  //Example of applying local themes to a certain widget in app
                       Theme(
                     data: ThemeData(
-                      primaryColor: Colors.deepOrange,
-                      secondaryHeaderColor: Colors.orange,
-                      accentColor: Colors.orangeAccent,
+                      primaryColor: MyColors.orange1,
+                      secondaryHeaderColor: MyColors.orange2,
+                      accentColor: MyColors.orange3,
                     ),
                     child: SubscribeButton(),
                   ))
