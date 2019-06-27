@@ -13,13 +13,13 @@ class SubscribeButton extends StatelessWidget {
         height: 40,
         decoration: BoxDecoration(
             gradient: LinearGradient(
-                colors: [MyColors.blue1, MyColors.blue2],
+                colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
                 begin: Alignment.bottomRight,
                 end: Alignment.topLeft),
             borderRadius: BorderRadius.circular(20.0),
             boxShadow: [
               BoxShadow(
-                  color: MyColors.blue3.withOpacity(.3),
+                  color: Theme.of(context).accentColor.withOpacity(.3),
                   offset: Offset(0, 8),
                   blurRadius: 8.0)
             ]),

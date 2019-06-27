@@ -3,6 +3,7 @@ import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/widgets/emailBox.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
+import 'package:landingpage/utils/themes.dart';
 
 var backgroundImage = "assets/flutter_image.jpg";
 
@@ -23,7 +24,7 @@ class LargeScreen extends StatelessWidget {
       height: 600,
       child: Stack(
         fit: StackFit.expand,
-        children: <Widget>[addBackground(), addWelcomeText()],
+        children: <Widget>[addBackground(), addWelcomeText(context)],
       ),
     );
   }
@@ -41,7 +42,7 @@ class LargeScreen extends StatelessWidget {
   }
 
   //Adds welcome text
-  Widget addWelcomeText() {
+  Widget addWelcomeText(BuildContext context) {
     return FractionallySizedBox(
       alignment: Alignment.centerLeft, //text aligned to left side
       widthFactor: .6, //covers about half of the screen
@@ -69,7 +70,8 @@ class LargeScreen extends StatelessWidget {
                         style: TextStyle(
                             fontSize: 60,
                             fontWeight: FontWeight.bold,
-                            color: Colors.black54))
+                            color: Colors.black54)
+                    )
                   ]),
             ),
             Padding(
@@ -79,7 +81,7 @@ class LargeScreen extends StatelessWidget {
             SizedBox(
               height: 40,
             ), //Give some spacing
-            EmailBox()
+            EmailBox(),
           ],
         ),
       ),

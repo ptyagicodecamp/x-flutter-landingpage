@@ -10,7 +10,7 @@ class EmailBox extends StatelessWidget {
     return Padding(
       padding: EdgeInsets.only(
           left: 4.0,
-          right: ResponsiveWidget.isSmallScreen(context) ? 4: 74,
+          right: ResponsiveWidget.isSmallScreen(context) ? 4 : 74,
           top: 10,
           bottom: 40),
       child: Container(
@@ -35,9 +35,16 @@ class EmailBox extends StatelessWidget {
                 ),
               ),
               Expanded(
-                flex: 2,
-                child: SubscribeButton(),
-              )
+                  flex: 2,
+                  child: //Example of applying local themes to a certain widget in app
+                      Theme(
+                    data: ThemeData(
+                      primaryColor: Colors.deepOrange,
+                      secondaryHeaderColor: Colors.orange,
+                      accentColor: Colors.orangeAccent,
+                    ),
+                    child: SubscribeButton(),
+                  ))
             ],
           ),
         ),
