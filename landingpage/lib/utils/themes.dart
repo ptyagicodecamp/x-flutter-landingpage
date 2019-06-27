@@ -48,7 +48,7 @@ class MyAppThemes {
     );
   }
 
-//Example of extending the parent theme
+//Example of extending the parent theme. Overwrites textTheme with given attributes
   static TextTheme getItalicTitleTextTheme(BuildContext context) {
     return Theme.of(context).textTheme.copyWith(title: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),);
   }
