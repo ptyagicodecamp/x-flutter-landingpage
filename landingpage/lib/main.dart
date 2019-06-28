@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/widgets/header.dart';
 import 'package:landingpage/widgets/body.dart';
+import 'package:landingpage/utils/themes.dart';
 
 void main() => runApp(MyApp());
 
@@ -12,9 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter to fly !',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
+      theme: MyAppThemes.AppThemeBlue(context),
       home: MyHomePage(),
     );
   }

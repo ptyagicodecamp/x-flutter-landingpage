@@ -45,7 +45,12 @@ flutter:
     - assets/email.png
     - assets/flutter_image.jpg
     - assets/menu.png
-  #  - images/a_dot_ham.jpeg
+
+  fonts:
+    - family: Indie Flower
+      fonts:
+        - asset: fonts/IndieFlower.ttf
+
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/assets-and-images/#resolution-aware.

@@ -15,7 +15,7 @@ class Header extends StatelessWidget {
   Widget buildHeader(BuildContext context) {
     return Row(
       mainAxisAlignment: MainAxisAlignment.spaceBetween,
-      children: <Widget>[buildLogo(), buildHeaderLinks(context)],
+      children: <Widget>[buildLogo(context), buildHeaderLinks(context)],
     );
   }
 
@@ -24,28 +24,29 @@ class Header extends StatelessWidget {
     if (!ResponsiveWidget.isSmallScreen(context))
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
-        children: getLinksListing()..add(buildLoginButton()),
+        children: getLinksListing(context)..add(buildLoginButton(context)),
       );
     else
       return Image.asset("assets/menu.png", width: 25, height: 25);
   }
 
   //Builds navigation list for header
-  List<Widget> getLinksListing() {
+  List<Widget> getLinksListing(BuildContext context) {
     var links = ["Home", "Samples", "Videos", "Plugins"];
     return links.map((link) {
       return Padding(
         padding: EdgeInsets.only(left: 18),
         child: Text(
           link,
-          style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+          style: Theme.of(context).textTheme.title,
+          //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
         ),
       );
     }).toList();
   }
 
   //Builds and decorates login button
-  Widget buildLoginButton() {
+  Widget buildLoginButton(BuildContext context) {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: InkWell(
@@ -55,13 +56,13 @@ class Header extends StatelessWidget {
           height: 40,
           decoration: BoxDecoration(
               gradient: LinearGradient(
-                  colors: [MyColors.blue1, MyColors.blue2],
+                  colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
                   begin: Alignment.bottomRight,
                   end: Alignment.topLeft),
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
-                    color: MyColors.blue3.withOpacity(0.3),
+                    color: Theme.of(context).accentColor.withOpacity(0.3),
                     offset: Offset(0, 8), //Shadow starts at x=0, y=8
                     blurRadius: 8)
               ]),
@@ -81,7 +82,7 @@ class Header extends StatelessWidget {
   }
 
   //Builds rectangle with circular corners and Text on it and next to it as title
-  Widget buildLogo() {
+  Widget buildLogo(BuildContext context) {
     return Row(
       children: <Widget>[
         Container(
@@ -90,14 +91,15 @@ class Header extends StatelessWidget {
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
             gradient: LinearGradient(
-                colors: [MyColors.blue1, MyColors.blue2],
+                colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
                 begin: Alignment.bottomRight,
                 end: Alignment.topLeft),
           ),
           child: Center(
             child: Text(
               Strings.logoTitle,
-              style: TextStyle(fontSize: 30, color: MyColors.white1),
+              style: Theme.of(context).textTheme.title,
+              //style: TextStyle(fontSize: 30, color: MyColors.white1),
             ),
           ),
         ),
