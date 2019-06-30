@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
+import 'package:landingpage/utils/admob.dart';
 
 class Header extends StatelessWidget {
   @override
@@ -27,7 +28,12 @@ class Header extends StatelessWidget {
         children: getLinksListing(context)..add(buildLoginButton(context)),
       );
     else
-      return Image.asset("assets/menu.png", width: 25, height: 25);
+      return InkWell(
+        child: Image.asset("assets/menu.png", width: 25, height: 25),
+        onTap: () => {
+          Admob.showInterstitialAd(),
+        },
+      );
   }
 
   //Builds navigation list for header
@@ -36,10 +42,14 @@ class Header extends StatelessWidget {
     return links.map((link) {
       return Padding(
         padding: EdgeInsets.only(left: 18),
-        child: Text(
-          link,
-          style: Theme.of(context).textTheme.title,
-          //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+        child: InkWell(
+          child: Text(
+            link,
+            style: Theme.of(context).textTheme.title,
+          ),
+          onTap: () => {
+            Admob.showBannerAd(),
+          },
         ),
       );
     }).toList();
@@ -55,10 +65,10 @@ class Header extends StatelessWidget {
           width: 120,
           height: 40,
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft),
+              gradient: LinearGradient(colors: [
+                Theme.of(context).primaryColor,
+                Theme.of(context).secondaryHeaderColor
+              ], begin: Alignment.bottomRight, end: Alignment.topLeft),
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -90,10 +100,10 @@ class Header extends StatelessWidget {
           height: 60,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
-            gradient: LinearGradient(
-                colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
-                begin: Alignment.bottomRight,
-                end: Alignment.topLeft),
+            gradient: LinearGradient(colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).secondaryHeaderColor
+            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
           ),
           child: Center(
             child: Text(
