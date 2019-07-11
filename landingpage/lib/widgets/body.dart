@@ -123,10 +123,11 @@ class SmallScreen extends StatelessWidget {
               height: 30,
             ),
             Center(
-              child: Image.asset(
-                backgroundImage,
-                scale: 1,
-              ),
+//              child: Image.asset(
+//                backgroundImage,
+//                scale: 1,
+//              ),
+              child: Image.network("https://firebasestorage.googleapis.com/v0/b/fir-recipes-b5611.appspot.com/o/images%2Fflutter_banner.png?alt=media&token=f4e81497-ca05-47f7-b5a8-a4f6bbe2239e"),
             ),
             Padding(
               padding: EdgeInsets.only(left: 12.0, top: 20),
