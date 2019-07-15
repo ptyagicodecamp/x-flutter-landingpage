@@ -9,7 +9,7 @@ dependencies:
 dev_dependencies:
   flutter_web_test: any
   #dependencies to enable the Dart web build system
-  build_runner: ^1.2.2
+  build_runner: ^1.3.5 #^1.2.0 # ^1.3.5 (building site)
   build_web_compilers: ^1.1.0
   test: ^1.3.4
 
