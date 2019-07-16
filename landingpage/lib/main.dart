@@ -13,7 +13,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MaterialApp(
       title: 'Flutter to fly !',
-      theme: MyAppThemes.AppThemeGreen(context),
+      theme: MyAppThemes.AppThemeBlue(context),
       home: MyHomePage(),
     );
   }
@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Column(
-            children: <Widget>[Header(), Body()],
+            children: <Widget>[HeaderWidget(), Body()],
           ),
         ),
       ),
