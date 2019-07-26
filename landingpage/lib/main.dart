@@ -31,7 +31,7 @@ class MyHomePage extends StatelessWidget {
         backgroundColor: Colors.transparent,
         body: SingleChildScrollView(
           child: Column(
-            children: <Widget>[Header(), Body()],
+            children: <Widget>[HeaderWidget(), Body()],
           ),
         ),
       ),

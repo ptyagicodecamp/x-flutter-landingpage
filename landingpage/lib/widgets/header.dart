@@ -2,8 +2,20 @@ import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
+//import 'dart:js' as js;
+import 'package:landingpage/utils/my_platform.dart';
 
-class Header extends StatelessWidget {
+enum NavLinks {Home, Github, Videos, Jobs}
+
+class HeaderWidget extends StatefulWidget {
+  @override
+  _HeaderWidgetState createState() => _HeaderWidgetState();
+
+}
+
+class _HeaderWidgetState extends State<HeaderWidget> {
+  var links = ["Home", "Github", "Videos", "Jobs"];
+
   @override
   Widget build(BuildContext context) {
     return Padding(
@@ -26,23 +38,89 @@ class Header extends StatelessWidget {
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: getLinksListing(context)..add(buildLoginButton(context)),
       );
-    else
-      return Image.asset("assets/menu.png", width: 25, height: 25);
+    else {
+      return PopupMenuButton(
+        child: Image.network("assets/menu.png", width: 25, height: 25),
+        onSelected: (NavLinks value) {
+          setState(() {
+            openLink(value);
+          });
+        },
+        itemBuilder: (BuildContext context) =>
+        <PopupMenuEntry<NavLinks>>[
+          const PopupMenuItem(
+              value: NavLinks.Home,
+              child: Text("Home")),
+          const PopupMenuItem(
+              value: NavLinks.Github,
+              child: Text("Github")),
+          const PopupMenuItem(
+              value: NavLinks.Videos,
+              child: Text("Videos")),
+          const PopupMenuItem(
+              value: NavLinks.Jobs,
+              child: Text("Jobs")),
+
+        ],
+      );
+    }
   }
+
 
   //Builds navigation list for header
   List<Widget> getLinksListing(BuildContext context) {
-    var links = ["Home", "Samples", "Videos", "Plugins"];
-    return links.map((link) {
+
+    return NavLinks.values.map((link) {
       return Padding(
-        padding: EdgeInsets.only(left: 18),
-        child: Text(
-          link,
-          style: Theme.of(context).textTheme.title,
-          //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
-        ),
-      );
+          padding: EdgeInsets.only(left: 18),
+          child: InkWell(
+              hoverColor: Theme.of(context).primaryColor,
+              highlightColor: Theme.of(context).secondaryHeaderColor,
+              splashColor: Theme.of(context).primaryColor,
+              borderRadius: BorderRadius.circular(10.0),
+              child: Text(
+                link.toString(),
+                style: Theme.of(context).textTheme.title,
+                //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+              ),
+              onTap: () {
+                openLink(link);
+              }));
     }).toList();
+  }
+
+  void openLink(NavLinks link) {
+    print("open link:" + link.toString());
+    if (!MyPlatform.isMobile()) {
+      js.context.callMethod("open", [getTargetUrl(link)]);
+    }
+  }
+  String getTargetUrl(NavLinks link) {
+    String url = "";
+
+    switch (link) {
+      case NavLinks.Home:
+        url = "https://flutter-to-fly.firebaseapp.com";
+        break;
+
+      case NavLinks.Github:
+        url = "https://github.com/ptyagicodecamp";
+        break;
+
+      case NavLinks.Videos:
+        url =
+            "https://www.youtube.com/channel/UCO3_dbHasEnA2dr_U0EhMAA/videos?view_as=subscriber";
+        break;
+
+      case NavLinks.Jobs:
+        url = "https://flutterjobs.info";
+        break;
+
+      default:
+        url = "https://flutter-to-fly.firebaseapp.com";
+    }
+    print("url: " + url);
+    return url;
   }
 
   //Builds and decorates login button
@@ -55,10 +133,10 @@ class Header extends StatelessWidget {
           width: 120,
           height: 40,
           decoration: BoxDecoration(
-              gradient: LinearGradient(
-                  colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
-                  begin: Alignment.bottomRight,
-                  end: Alignment.topLeft),
+              gradient: LinearGradient(colors: [
+                Theme.of(context).primaryColor,
+                Theme.of(context).secondaryHeaderColor
+              ], begin: Alignment.bottomRight, end: Alignment.topLeft),
               borderRadius: BorderRadius.circular(20),
               boxShadow: [
                 BoxShadow(
@@ -90,10 +168,10 @@ class Header extends StatelessWidget {
           height: 60,
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(18),
-            gradient: LinearGradient(
-                colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
-                begin: Alignment.bottomRight,
-                end: Alignment.topLeft),
+            gradient: LinearGradient(colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).secondaryHeaderColor
+            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
           ),
           child: Center(
             child: Text(
@@ -114,4 +192,6 @@ class Header extends StatelessWidget {
       ],
     );
   }
+
+
 }
