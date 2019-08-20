@@ -4,6 +4,7 @@ import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/widgets/header.dart';
 import 'package:landingpage/widgets/body.dart';
 import 'package:landingpage/utils/themes.dart';
+import 'router.dart' as router;
 
 void main() => runApp(MyApp());
 
@@ -14,27 +15,8 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter to fly !',
       theme: MyAppThemes.AppThemeBlue(context),
-      home: MyHomePage(),
-    );
-  }
-}
-
-class MyHomePage extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    //Add a container and provide a linear gradient.
-    //basically use different shades of same color.
-    return Container(
-      decoration: BoxDecoration(
-          gradient: LinearGradient(colors: [MyColors.white1, MyColors.white2])),
-      child: Scaffold(
-        backgroundColor: Colors.transparent,
-        body: SingleChildScrollView(
-          child: Column(
-            children: <Widget>[HeaderWidget(), Body()],
-          ),
-        ),
-      ),
+      onGenerateRoute: router.generateRoute,
+      initialRoute: '/',
     );
   }
 }

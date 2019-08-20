@@ -47,7 +47,7 @@ flutter:
     - assets/flutter_image.jpg
     - assets/menu.png
     - assets/flutter-to-fly-creds.json
-
+    
   fonts:
     - family: Indie Flower
       fonts:

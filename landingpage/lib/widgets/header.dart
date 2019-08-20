@@ -4,13 +4,11 @@ import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 //import 'dart:js' as js;
 import 'package:landingpage/utils/my_platform.dart';
-
-enum NavLinks {Home, Github, Videos, Jobs}
+import '../utils/display_util.dart';
 
 class HeaderWidget extends StatefulWidget {
   @override
   _HeaderWidgetState createState() => _HeaderWidgetState();
-
 }
 
 class _HeaderWidgetState extends State<HeaderWidget> {
@@ -33,43 +31,32 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   //Builds navigation links at the right top of landing page
   Widget buildHeaderLinks(BuildContext context) {
-    if (!ResponsiveWidget.isSmallScreen(context))
+    if (!ResponsiveWidget.isSmallScreen(context)) {
       return Row(
         mainAxisAlignment: MainAxisAlignment.spaceAround,
         children: getLinksListing(context)..add(buildLoginButton(context)),
       );
-    else {
+    } else {
       return PopupMenuButton(
-        child: Image.network("assets/menu.png", width: 25, height: 25),
+        //child: Image.network("assets/menu.png", width: 25, height: 25),
+        child: Image.asset("assets/menu.png", width: 25, height: 25),
         onSelected: (NavLinks value) {
           setState(() {
             openLink(value);
           });
         },
-        itemBuilder: (BuildContext context) =>
-        <PopupMenuEntry<NavLinks>>[
-          const PopupMenuItem(
-              value: NavLinks.Home,
-              child: Text("Home")),
-          const PopupMenuItem(
-              value: NavLinks.Github,
-              child: Text("Github")),
-          const PopupMenuItem(
-              value: NavLinks.Videos,
-              child: Text("Videos")),
-          const PopupMenuItem(
-              value: NavLinks.Jobs,
-              child: Text("Jobs")),
-
+        itemBuilder: (BuildContext context) => <PopupMenuEntry<NavLinks>>[
+          const PopupMenuItem(value: NavLinks.Home, child: Text("Home")),
+          const PopupMenuItem(value: NavLinks.Github, child: Text("Github")),
+          const PopupMenuItem(value: NavLinks.Videos, child: Text("Videos")),
+          const PopupMenuItem(value: NavLinks.Jobs, child: Text("Jobs")),
         ],
       );
     }
   }
 
-
   //Builds navigation list for header
   List<Widget> getLinksListing(BuildContext context) {
-
     return NavLinks.values.map((link) {
       return Padding(
           padding: EdgeInsets.only(left: 18),
@@ -79,7 +66,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
               splashColor: Theme.of(context).primaryColor,
               borderRadius: BorderRadius.circular(10.0),
               child: Text(
-                link.toString(),
+                displayString(link),
                 style: Theme.of(context).textTheme.title,
                 //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
               ),
@@ -92,9 +79,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   void openLink(NavLinks link) {
     print("open link:" + link.toString());
     if (!MyPlatform.isMobile()) {
-      js.context.callMethod("open", [getTargetUrl(link)]);
+      //js.context.callMethod("open", [getTargetUrl(link)]);
     }
   }
+
   String getTargetUrl(NavLinks link) {
     String url = "";
 
@@ -192,6 +180,4 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       ],
     );
   }
-
-
 }
