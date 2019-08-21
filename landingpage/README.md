@@ -1,8 +1,4 @@
-# landingpage
-
-Cross platform sample landing page implemented in Flutter
-
-### Code recipe -Implementing Flutter FactsBot using DialogFlow
+#Implementing Flutter FactsBot using DialogFlow
 
 Read article here: [Implementing Flutter FactsBot using DialogFlow](https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html)
 
