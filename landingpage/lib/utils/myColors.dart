@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 class MyColors {
   static const Color white1 = Color(0xFFF8FBFF);

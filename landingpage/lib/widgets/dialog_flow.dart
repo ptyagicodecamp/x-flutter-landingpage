@@ -1,6 +1,9 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
+import 'package:landingpage/flutter_dialogflow2/auth_google.dart';
+import 'package:landingpage/flutter_dialogflow2/language.dart';
+import 'package:landingpage/flutter_dialogflow2/message.dart';
 import 'fact_message.dart';
-import 'package:flutter_dialogflow/dialogflow_v2.dart';
+import 'package:landingpage/flutter_dialogflow2/dialogflow_v2.dart';
 
 class FlutterFactsDialogFlow extends StatefulWidget {
   FlutterFactsDialogFlow({Key key, this.title}) : super(key: key);
