@@ -2,15 +2,11 @@
 
 Cross platform sample landing page implemented in Flutter
 
-## Getting Started
+### Code recipe -Implementing Flutter FactsBot using DialogFlow
 
-This project is a starting point for a Flutter application.
+Read article here: [Implementing Flutter FactsBot using DialogFlow](https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html)
 
-A few resources to get you started if this is your first Flutter project:
+Source code is available [here](https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native)
 
-- [Lab: Write your first Flutter app](https://flutter.dev/docs/get-started/codelab)
-- [Cookbook: Useful Flutter samples](https://flutter.dev/docs/cookbook)
-
-For help getting started with Flutter, view our
-[online documentation](https://flutter.dev/docs), which offers tutorials,
-samples, guidance on mobile development, and a full API reference.
+Follow me at twitter: @ptyagi13
+Medium: @ptyagicodecamp
