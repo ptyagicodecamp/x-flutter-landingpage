@@ -1,8 +1,5 @@
 //Note: This needs to be changed to flutter package for Native apps
 import 'package:flutter/material.dart';
-import 'package:landingpage/utils/myColors.dart';
-import 'package:landingpage/widgets/header.dart';
-import 'package:landingpage/widgets/body.dart';
 import 'package:landingpage/utils/themes.dart';
 import 'router.dart' as router;
 

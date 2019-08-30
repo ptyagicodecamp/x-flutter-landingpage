@@ -9,8 +9,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case '/':
       return MaterialPageRoute(builder: (context) => MyHomePage());
       break;
+
     case FACTS_DIALOGFLOW:
       return MaterialPageRoute(builder: (context) => FlutterFactsDialogFlow());
-      
+      break;
+
+    default:
+      return MaterialPageRoute(builder: (context) => MyHomePage());
   }
 }
