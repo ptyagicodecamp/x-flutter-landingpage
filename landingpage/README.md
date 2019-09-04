@@ -6,3 +6,7 @@ Source code is available [here](https://github.com/ptyagicodecamp/x-flutter-land
 
 Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp
+
+##Credits:
+[Bird logo](https://www.vecteezy.com/vector-art/604578-hummingbird-icon-logo-and-symbols-template-vector)
+[Landing page image]()
