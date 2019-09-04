@@ -1,4 +1,4 @@
-enum NavLinks { Home, Github, Videos, Jobs }
+enum NavLinks { Home, Github, Videos, Jobs, LogIn }
 
 String displayString(NavLinks link) {
   switch(link) {
@@ -15,6 +15,10 @@ String displayString(NavLinks link) {
 
     case NavLinks.Jobs:
       return "Jobs";
+      break;
+
+    case NavLinks.LogIn:
+      return "LogIn";
       break;
 
     default:

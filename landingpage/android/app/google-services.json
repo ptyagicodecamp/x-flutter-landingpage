@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "20736492610",
+    "firebase_url": "https://flutter-to-fly.firebaseio.com",
+    "project_id": "flutter-to-fly",
+    "storage_bucket": "flutter-to-fly.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:20736492610:android:df5b054b0db87bea",
+        "android_client_info": {
+          "package_name": "org.pcc.landingpage"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "20736492610-n3vq7n8ab5lv50htnd4dvrt6c5c59jgq.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "org.pcc.landingpage",
+            "certificate_hash": "d90efd38eb51a5a3f3e2ab70428ed905114493b6"
+          }
+        },
+        {
+          "client_id": "20736492610-d7jjjf6hlbl61jro5mvvo590smcq9je3.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBLEsu9Lh_mFLypJdm7jcIu5Dm-GF0viRg"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "20736492610-d7jjjf6hlbl61jro5mvvo590smcq9je3.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

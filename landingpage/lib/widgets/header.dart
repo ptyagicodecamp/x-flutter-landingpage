@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
+import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/myColors.dart';
-import 'package:landingpage/utils/strings.dart';
-import 'package:landingpage/utils/responsive_widget.dart';
-//import 'dart:js' as js;
 import 'package:landingpage/utils/my_platform.dart';
+import 'package:landingpage/utils/responsive_widget.dart';
+import 'package:landingpage/utils/strings.dart';
+
 import '../utils/display_util.dart';
 
 class HeaderWidget extends StatefulWidget {
@@ -50,6 +51,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           const PopupMenuItem(value: NavLinks.Github, child: Text("Github")),
           const PopupMenuItem(value: NavLinks.Videos, child: Text("Videos")),
           const PopupMenuItem(value: NavLinks.Jobs, child: Text("Jobs")),
+          PopupMenuItem(value: NavLinks.LogIn, child: buildLoginButton(context))
         ],
       );
     }
@@ -116,6 +118,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, router.FIREBASE_LOGIN);
+        },
         child: Container(
           margin: EdgeInsets.only(left: 20),
           width: 120,
@@ -152,21 +157,22 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     return Row(
       children: <Widget>[
         Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            gradient: LinearGradient(colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).secondaryHeaderColor
-            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
-          ),
+          width: 50,
+          height: 50,
+//          decoration: BoxDecoration(
+//            borderRadius: BorderRadius.circular(18),
+//            gradient: LinearGradient(colors: [
+//              Theme.of(context).primaryColor,
+//              Theme.of(context).secondaryHeaderColor
+//            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
+//          ),
           child: Center(
-            child: Text(
-              Strings.logoTitle,
-              style: Theme.of(context).textTheme.title,
-              //style: TextStyle(fontSize: 30, color: MyColors.white1),
-            ),
+            child: Image.asset('assets/bird.jpg'),
+//            child: Text(
+//              Strings.logoTitle,
+//              style: Theme.of(context).textTheme.title,
+//              //style: TextStyle(fontSize: 30, color: MyColors.white1),
+//            ),
           ),
         ),
         //give some space between logo box and title
