@@ -1,11 +1,11 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 import '../router.dart';
 import 'myColors.dart';
 
 Widget factBot(BuildContext context) {
   return Container(
-    alignment: Alignment.bottomRight,
+      alignment: Alignment.bottomRight,
       child: FloatingActionButton(
         materialTapTargetSize: MaterialTapTargetSize.padded,
         child: Center(
@@ -14,17 +14,12 @@ Widget factBot(BuildContext context) {
         elevation: 4.0,
         backgroundColor: MyColors.blue1,
         onPressed: () => Navigator.pushNamed(context, FACTS_DIALOGFLOW),
-      )
-  );
+      ));
 }
 
 class LogInButton extends StatelessWidget {
   LogInButton(
-      {this.key,
-        this.text,
-        this.height,
-        this.onPressed,
-        this.backgroundColor})
+      {this.key, this.text, this.height, this.onPressed, this.backgroundColor})
       : super(key: key);
   Key key;
   String text;

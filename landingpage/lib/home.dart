@@ -1,7 +1,8 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
+
 import 'utils/myColors.dart';
-import 'widgets/header.dart';
 import 'widgets/body.dart';
+import 'widgets/header.dart';
 
 class MyHomePage extends StatelessWidget {
   @override

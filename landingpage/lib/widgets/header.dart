@@ -1,7 +1,6 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/myColors.dart';
-import 'package:landingpage/utils/my_platform.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/strings.dart';
 
@@ -40,7 +39,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     } else {
       return PopupMenuButton(
         //child: Image.network("assets/menu.png", width: 25, height: 25),
-        child: Image.asset("assets/menu.png", width: 25, height: 25),
+        child: Image.asset("images/menu.png", width: 25, height: 25),
         onSelected: (NavLinks value) {
           setState(() {
             openLink(value);
@@ -80,9 +79,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 
   void openLink(NavLinks link) {
     print("open link:" + link.toString());
-    if (!MyPlatform.isMobile()) {
-      //js.context.callMethod("open", [getTargetUrl(link)]);
-    }
+//    if (!MyPlatform.isMobile()) {
+//      //js.context.callMethod("open", [getTargetUrl(link)]);
+//    }
   }
 
   String getTargetUrl(NavLinks link) {
@@ -167,7 +166,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
 //            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
 //          ),
           child: Center(
-            child: Image.asset('assets/bird.jpg'),
+            child: Image.asset('images/bird.jpg'),
 //            child: Text(
 //              Strings.logoTitle,
 //              style: Theme.of(context).textTheme.title,

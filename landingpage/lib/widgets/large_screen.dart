@@ -1,9 +1,8 @@
-import 'package:flutter/material.dart';
-import 'package:landingpage/utils/strings.dart';
+import 'package:flutter_web/material.dart';
 import 'package:landingpage/utils/myColors.dart';
-import 'package:landingpage/widgets/emailBox.dart';
-
+import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/widgets_lib.dart';
+import 'package:landingpage/widgets/emailBox.dart';
 
 class LargeScreen extends StatelessWidget {
   @override
@@ -22,10 +21,11 @@ class LargeScreen extends StatelessWidget {
     return FractionallySizedBox(
       alignment: Alignment.centerRight, //to keep images aligned to right
       widthFactor: .6, //covers about 60% of the screen width
-      child: Image.asset(
-        Strings.backgroundImage,
-        scale: .85,
-      ),
+      child: Image.asset(Strings.backgroundImage),
+//      child: Image.asset(
+//        Strings.backgroundImage,
+//        scale: .85,
+//      ),
     );
   }
 

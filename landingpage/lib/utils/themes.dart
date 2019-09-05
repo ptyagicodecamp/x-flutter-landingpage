@@ -1,8 +1,7 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 
 class MyAppThemes {
-
   static ThemeData AppThemeBlue(BuildContext context) {
     return ThemeData(
       // Define the default brightness and colors for the overall app.
@@ -46,13 +45,24 @@ class MyAppThemes {
   static TextTheme getDefaultTextTheme(BuildContext context) {
     return TextTheme(
       headline: TextStyle(fontSize: 36.0, fontWeight: FontWeight.bold),
-      title: TextStyle(fontSize: 20.0, fontStyle: FontStyle.normal, fontWeight: FontWeight.bold),
-      body1: TextStyle(fontSize: 26.0,  fontStyle: FontStyle.italic, fontWeight: FontWeight.normal),
+      title: TextStyle(
+          fontSize: 20.0,
+          fontStyle: FontStyle.normal,
+          fontWeight: FontWeight.bold),
+      body1: TextStyle(
+          fontSize: 26.0,
+          fontStyle: FontStyle.italic,
+          fontWeight: FontWeight.normal),
     );
   }
 
 //Example of extending the parent theme. Overwrites textTheme with given attributes
   static TextTheme getItalicTitleTextTheme(BuildContext context) {
-    return Theme.of(context).textTheme.copyWith(title: TextStyle(fontSize: 20.0, fontStyle: FontStyle.italic, fontWeight: FontWeight.bold),);
+    return Theme.of(context).textTheme.copyWith(
+          title: TextStyle(
+              fontSize: 20.0,
+              fontStyle: FontStyle.italic,
+              fontWeight: FontWeight.bold),
+        );
   }
 }

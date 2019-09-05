@@ -1,10 +1,9 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:landingpage/login/auth_service.dart';
-import 'package:landingpage/login/login_page.dart';
+import 'package:firebase/firebase.dart';
+import 'package:flutter_web/material.dart';
+import 'package:landingpage/login_web/auth_service.dart';
+import 'package:landingpage/login_web/login_page.dart';
+import 'package:landingpage/login_web/user_profile.dart';
 import 'package:provider/provider.dart';
-import 'user_profile.dart';
-import 'login_page.dart';
 
 //user Firebase Auth to login using Google account credentials
 class FirebaseAuthLogin extends StatefulWidget {
@@ -36,16 +35,16 @@ class _FirebaseAuthLoginState extends State<FirebaseAuthLogin> {
   }
 
   FutureBuilder futureWidget() {
-    return FutureBuilder<FirebaseUser>(
+    return FutureBuilder<User>(
       future: Provider.of<FireAuthService>(context).currentUser(),
-      builder: (context, AsyncSnapshot<FirebaseUser> snapshot) {
+      builder: (context, AsyncSnapshot<User> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.error != null) {
             return Text(snapshot.error.toString());
           }
 
           if (snapshot.hasData) {
-            return UserProfilePage(snapshot.data);
+            return UserProfilePage(context, snapshot.data);
           }
 
           noData = true;

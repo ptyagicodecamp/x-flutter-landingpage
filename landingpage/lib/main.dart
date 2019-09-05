@@ -1,6 +1,7 @@
 //Note: This needs to be changed to flutter package for Native apps
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 import 'package:landingpage/utils/themes.dart';
+
 import 'router.dart' as router;
 
 void main() => runApp(MyApp());

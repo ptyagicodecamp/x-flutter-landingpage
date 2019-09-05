@@ -1,9 +1,9 @@
-import 'package:flutter/material.dart';
-import 'package:landingpage/utils/strings.dart';
+import 'package:flutter_web/material.dart';
 import 'package:landingpage/utils/myColors.dart';
-import '../router.dart';
-import 'emailBox.dart';
+import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/widgets_lib.dart';
+
+import 'emailBox.dart';
 
 class SmallScreen extends StatelessWidget {
   @override

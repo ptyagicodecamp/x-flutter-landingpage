@@ -1,11 +1,10 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/material.dart';
-import 'package:landingpage/login/user_profile.dart';
+import 'package:firebase/firebase.dart';
+import 'package:flutter_web/material.dart';
+import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/widgets_lib.dart';
 import 'package:provider/provider.dart';
 
 import 'auth_service.dart';
-import 'package:landingpage/router.dart' as router;
 
 class LogInPage extends StatefulWidget {
   final String title;
@@ -40,7 +39,13 @@ class _LogInPageState extends State<LogInPage> {
                         key: formKey,
                         child: Column(
                           crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: loginForm() + [SizedBox(height: 30,)] + submissionOptions(), // adding two widget lists
+                          children: loginForm() +
+                              [
+                                SizedBox(
+                                  height: 30,
+                                )
+                              ] +
+                              submissionOptions(), // adding two widget lists
                         ))),
               ])),
               hintText(),
@@ -66,7 +71,7 @@ class _LogInPageState extends State<LogInPage> {
       //hides keyboard
       FocusScope.of(context).requestFocus(new FocusNode());
       try {
-        FirebaseUser firebaseUser = _formType == FormType.login
+        User firebaseUser = _formType == FormType.login
             ? await Provider.of<FireAuthService>(context)
                 .signIn(_email, _password)
             : await Provider.of<FireAuthService>(context)
@@ -79,7 +84,6 @@ class _LogInPageState extends State<LogInPage> {
           //user created his account. Now directly sign-in
           Navigator.pushNamed(context, router.USER_PROFILE,
               arguments: firebaseUser);
-
         });
       } catch (e) {
         setState(() {
@@ -145,10 +149,15 @@ class _LogInPageState extends State<LogInPage> {
               height: 44.0,
               backgroundColor: Colors.blue,
               onPressed: submitForm),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           FlatButton(
               key: Key('register'),
-              child: Text("Need an account? Register", style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),),
+              child: Text(
+                "Need an account? Register",
+                style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+              ),
               onPressed: register),
         ];
       case FormType.register:
@@ -159,10 +168,15 @@ class _LogInPageState extends State<LogInPage> {
               height: 44.0,
               backgroundColor: Colors.blue,
               onPressed: submitForm),
-          SizedBox(height: 10,),
+          SizedBox(
+            height: 10,
+          ),
           FlatButton(
               key: Key('sign_in'),
-              child: Text("Registered already ? Login", style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),),
+              child: Text(
+                "Registered already ? Login",
+                style: TextStyle(fontSize: 20, fontStyle: FontStyle.italic),
+              ),
               onPressed: signIn),
         ];
     }

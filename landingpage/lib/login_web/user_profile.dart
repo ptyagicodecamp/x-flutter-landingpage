@@ -1,18 +1,14 @@
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:flutter/gestures.dart';
-import 'package:flutter/material.dart';
-import 'package:landingpage/home.dart';
-import 'package:landingpage/login/auth_service.dart';
-import 'package:landingpage/widgets/webview.dart';
-import 'package:landingpage/router.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase/firebase.dart';
+import 'package:flutter_web/material.dart';
+import 'package:landingpage/login_web/auth_service.dart';
 import 'package:provider/provider.dart';
 
 //user Firebase Auth to login using Google account credentials
 class UserProfilePage extends StatefulWidget {
-  final FirebaseUser currentUser;
+  final User currentUser;
+  final BuildContext _buildContext;
 
-  UserProfilePage(this.currentUser);
+  UserProfilePage(this._buildContext, this.currentUser);
 
   @override
   State<StatefulWidget> createState() {
@@ -25,8 +21,9 @@ class _UserProfilePageState extends State<UserProfilePage> {
 
   @override
   Widget build(BuildContext context) {
-    if (widget.currentUser.photoUrl != null) {
-      photoUrl = widget.currentUser.photoUrl;
+    print("Priyanka: " + widget.currentUser.email);
+    if (widget.currentUser.photoURL != null) {
+      photoUrl = widget.currentUser.photoURL;
     }
     return Center(
       child: Column(
@@ -41,18 +38,23 @@ class _UserProfilePageState extends State<UserProfilePage> {
                 fontWeight: FontWeight.bold,
                 fontStyle: FontStyle.normal),
           ),
-          SizedBox(height: 20.0,),
-
+          SizedBox(
+            height: 20.0,
+          ),
           SizedBox(
             height: 100,
             width: 100,
             child: CircleAvatar(
               radius: 200,
-              child: Image.network(photoUrl, fit: BoxFit.fitHeight,),
+              child: Image.network(
+                photoUrl,
+                fit: BoxFit.fitHeight,
+              ),
             ),
           ),
-          SizedBox(height: 20.0,),
-
+          SizedBox(
+            height: 20.0,
+          ),
           RaisedButton(
             child: Text('Sign out'),
             onPressed: () async {

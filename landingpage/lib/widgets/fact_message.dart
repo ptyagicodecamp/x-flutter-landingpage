@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart';
+import 'package:flutter_web/material.dart';
 
 class FactsMessage extends StatelessWidget {
   FactsMessage({this.text, this.name, this.type});
@@ -17,8 +17,7 @@ class FactsMessage extends StatelessWidget {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
-            Text(this.name,
-                style: TextStyle(fontWeight: FontWeight.bold)),
+            Text(this.name, style: TextStyle(fontWeight: FontWeight.bold)),
             Container(
               margin: const EdgeInsets.only(top: 5.0),
               child: Text(text),
