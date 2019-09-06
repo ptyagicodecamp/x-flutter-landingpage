@@ -1,6 +1,7 @@
 import 'package:firebase/firebase.dart';
 import 'package:flutter_web/material.dart';
 import 'package:landingpage/router.dart' as router;
+import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/widgets_lib.dart';
 import 'package:provider/provider.dart';
 
@@ -30,7 +31,50 @@ class _LogInPageState extends State<LogInPage> {
       appBar: AppBar(
         title: Text('LogIn'),
       ),
-      body: SingleChildScrollView(
+      body: body(context),
+    );
+  }
+
+  Widget body(BuildContext context) {
+    if (ResponsiveWidget.isSmallScreen(context)) {
+      return smallScreen(context);
+    }
+
+    return largeScreen(context);
+  }
+
+  Widget smallScreen(BuildContext context) {
+    return SingleChildScrollView(
+        child: Container(
+            padding: const EdgeInsets.all(16.0),
+            child: Column(children: [
+              Card(
+                  child:
+                      Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
+                Container(
+                    padding: const EdgeInsets.all(16.0),
+                    child: Form(
+                        key: formKey,
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.stretch,
+                          children: loginForm() +
+                              [
+                                SizedBox(
+                                  height: 30,
+                                )
+                              ] +
+                              submissionOptions(), // adding two widget lists
+                        ))),
+              ])),
+              hintText(),
+            ])));
+  }
+
+  Widget largeScreen(BuildContext context) {
+    return Center(
+      child: SizedBox(
+          width: MediaQuery.of(context).size.width / 2,
+          height: MediaQuery.of(context).size.height,
           child: Container(
               padding: const EdgeInsets.all(16.0),
               child: Column(children: [
