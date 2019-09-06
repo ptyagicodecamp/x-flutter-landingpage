@@ -36,7 +36,12 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
     case USER_PROFILE:
       return MaterialPageRoute(builder: (context) {
         final User firebaseUser = routeSettings.arguments;
-        return UserProfilePage(context, firebaseUser);
+        return ChangeNotifierProvider<FireAuthService>(
+          child: UserProfilePage(context, firebaseUser),
+          builder: (BuildContext context) {
+            return FireAuthService();
+          },
+        );
       });
       break;
     default:

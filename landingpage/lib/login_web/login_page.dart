@@ -26,41 +26,36 @@ class _LogInPageState extends State<LogInPage> {
 
   @override
   Widget build(BuildContext context) {
-    return SingleChildScrollView(
-        child: Container(
-            padding: const EdgeInsets.all(16.0),
-            child: Column(children: [
-              Card(
-                  child:
-                      Column(mainAxisSize: MainAxisSize.min, children: <Widget>[
-                Container(
-                    padding: const EdgeInsets.all(16.0),
-                    child: Form(
-                        key: formKey,
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.stretch,
-                          children: loginForm() +
-                              [
-                                SizedBox(
-                                  height: 30,
-                                )
-                              ] +
-                              submissionOptions(), // adding two widget lists
-                        ))),
-              ])),
-              hintText(),
-              SizedBox(
-                height: 50,
-              ),
-              LogInButton(
-                  key: Key('signin_google'),
-                  text: 'SignIn With Google',
-                  height: 44.0,
-                  backgroundColor: Colors.cyan,
-                  onPressed: () async {
-                    await Provider.of<FireAuthService>(context).googleSignIn();
-                  })
-            ])));
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('LogIn'),
+      ),
+      body: SingleChildScrollView(
+          child: Container(
+              padding: const EdgeInsets.all(16.0),
+              child: Column(children: [
+                Card(
+                    child: Column(
+                        mainAxisSize: MainAxisSize.min,
+                        children: <Widget>[
+                      Container(
+                          padding: const EdgeInsets.all(16.0),
+                          child: Form(
+                              key: formKey,
+                              child: Column(
+                                crossAxisAlignment: CrossAxisAlignment.stretch,
+                                children: loginForm() +
+                                    [
+                                      SizedBox(
+                                        height: 30,
+                                      )
+                                    ] +
+                                    submissionOptions(), // adding two widget lists
+                              ))),
+                    ])),
+                hintText(),
+              ]))),
+    );
   }
 
   void submitForm() async {
@@ -82,16 +77,12 @@ class _LogInPageState extends State<LogInPage> {
         setState(() {
           _hintText = 'Signed In\n\nUser id: $userId';
           //user created his account. Now directly sign-in
-          Navigator.pushNamed(context, router.USER_PROFILE,
+          Navigator.pushReplacementNamed(context, router.USER_PROFILE,
               arguments: firebaseUser);
         });
       } catch (e) {
         setState(() {
-          if (e.code == 'ERROR_USER_NOT_FOUND') {
-            _hintText = 'Login not found. Please register first.';
-          } else {
-            _hintText = 'Sign In Error\n\n${e.message}';
-          }
+          _hintText = 'Sign In Error\n\n${e.message}';
         });
       }
     } else {

@@ -18,50 +18,66 @@ class UserProfilePage extends StatefulWidget {
 
 class _UserProfilePageState extends State<UserProfilePage> {
   String photoUrl = "";
+  String displayName = "no name yet";
 
   @override
   Widget build(BuildContext context) {
-    print("Priyanka: " + widget.currentUser.email);
-    if (widget.currentUser.photoURL != null) {
-      photoUrl = widget.currentUser.photoURL;
+    if (widget.currentUser != null) {
+      if (widget.currentUser.photoURL != null) {
+        photoUrl = widget.currentUser.photoURL;
+      }
+      if (widget.currentUser.displayName != null) {
+        displayName = widget.currentUser.displayName;
+      }
     }
-    return Center(
-      child: Column(
-        children: <Widget>[
-          SizedBox(
-            height: 20.0,
-          ),
-          Text(
-            'Welcome ' + widget.currentUser.displayName,
-            style: TextStyle(
-                fontSize: 20,
-                fontWeight: FontWeight.bold,
-                fontStyle: FontStyle.normal),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          SizedBox(
-            height: 100,
-            width: 100,
-            child: CircleAvatar(
-              radius: 200,
-              child: Image.network(
-                photoUrl,
-                fit: BoxFit.fitHeight,
+
+    return Scaffold(
+      appBar: AppBar(
+        title: Text("My Profile"),
+      ),
+      body: Center(
+        child: Column(
+          children: <Widget>[
+            SizedBox(
+              height: 20.0,
+            ),
+            Text(
+              'Welcome ' + displayName,
+              style: TextStyle(
+                  fontSize: 20,
+                  fontWeight: FontWeight.bold,
+                  fontStyle: FontStyle.normal),
+            ),
+            SizedBox(
+              height: 20.0,
+            ),
+            SizedBox(
+              height: 100,
+              width: 100,
+              child: CircleAvatar(
+                radius: 200,
+                child: photoUrl != null
+                    ? Image.network(
+                        photoUrl,
+                        fit: BoxFit.fitHeight,
+                      )
+                    : Container(
+                        child: Icon(Icons.contacts),
+                      ),
               ),
             ),
-          ),
-          SizedBox(
-            height: 20.0,
-          ),
-          RaisedButton(
-            child: Text('Sign out'),
-            onPressed: () async {
-              await Provider.of<FireAuthService>(context).signOut();
-            },
-          )
-        ],
+            SizedBox(
+              height: 20.0,
+            ),
+            RaisedButton(
+              child: Text('Sign out'),
+              onPressed: () async {
+                Navigator.pushReplacementNamed(context, "/");
+                await Provider.of<FireAuthService>(context).signOut();
+              },
+            )
+          ],
+        ),
       ),
     );
   }

@@ -1,9 +1,9 @@
 import 'dart:async';
 
 import 'package:firebase/firebase.dart' as fb;
+import 'package:firebase/firestore.dart';
 import 'package:firebase/src/auth.dart';
 import 'package:flutter_web/foundation.dart';
-//import 'package:google_sign_in/google_sign_in.dart';
 
 abstract class BaseAuthService with ChangeNotifier {
   Future<User> currentUser();
@@ -26,53 +26,56 @@ class FireAuthService extends BaseAuthService {
   @override
   Future<User> signIn(String email, String password) async {
     try {
-      print("Priyanka signing in...");
-      var auth = await _firebaseAuth.signInWithEmailAndPassword(
-          "ptyagi@ptyagi.com", "ptyagi");
+      var auth =
+          await _firebaseAuth.signInWithEmailAndPassword(email, password);
+      var updated = updateUser(auth.user);
+      print("Tyagi: " + updated.toString());
       notifyListeners();
       return auth.user;
     } catch (e) {
-      throw Exception(e.code);
+      throw Exception(e);
     }
   }
 
   @override
   Future<User> googleSignIn() async {
-//    try {
-//      GoogleSignInAccount googleUser = await GoogleSignIn().signIn();
-//      GoogleSignInAuthentication googleAuth = await googleUser.authentication;
-//      AuthCredential credential = GoogleAuthProvider.credential(
-//        googleAuth.accessToken,
-//        googleAuth.idToken,
-//      );
-//
-//      fb.UserInfo firebaseUser =
-//          (await _firebaseAuth.signInWithCredential(credential)).user;
-//
-//      //creates user entry after logging-in for first tie.
-//      updateUser(firebaseUser);
-//
-//      notifyListeners();
-//
-//      return firebaseUser;
-//    } catch (e) {
-//      throw Exception(e.code);
-//    }
+    //TODO
   }
 
   @override
   Future<User> updateUser(User user) async {
-    //Firestore _fireStore = _firebaseAuth;
-//    DocumentReference documentReference =
-//        _fireStore.collection('users').document(user.uid);
+    final CollectionReference ref = fb.firestore().collection('users');
+
+    String displayName = user.displayName;
+    String photoUrl = user.photoURL;
+
+    if (displayName == null) {
+      displayName = "No Name yet";
+    }
+
+    if (photoUrl == null) {
+      photoUrl = "";
+    }
+
+    var newData = {
+      'uid': user.uid,
+      'displayName': displayName,
+      'photoUrl': photoUrl,
+      'email': user.email,
+      'lastActive': DateTime.now()
+    };
+
+    await ref.doc(user.uid).set(newData, SetOptions(merge: true));
+
+//    await ref.doc('ptyagi').set(newData);
 //
-//    documentReference.setData({
-//      'uid': user.uid,
-//      'displayName': user.displayName,
-//      'photoUrl': user.photoUrl,
-//      'email': user.email,
-//      'lastActive': DateTime.now()
-//    }, merge: true);
+//    var map = {"text": "hello", "createdAt": DateTime.now()};
+//
+//    try {
+//      await ref.add(map);
+//    } catch (e) {
+//      print("Error while writing document, $e");
+//    }
 
     return user;
   }
@@ -82,9 +85,12 @@ class FireAuthService extends BaseAuthService {
       String firstName, String lastName, String email, String password) async {
     var auth =
         await _firebaseAuth.createUserWithEmailAndPassword(email, password);
-//    UserUpdateInfo info = UserUpdateInfo();
-//    info.displayName = '$firstName $lastName';
-//    await auth.user.updateProfile(info);
+
+    var info = fb.UserProfile();
+    info.displayName = '$firstName $lastName';
+    await auth.user.updateProfile(info);
+
+    updateUser(auth.user);
 
     return auth.user;
   }

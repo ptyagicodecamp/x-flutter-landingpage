@@ -17,24 +17,10 @@ class _FirebaseAuthLoginState extends State<FirebaseAuthLogin> {
   static bool noData = false;
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: Text("LogIn Demo"),
-      ),
-      body: body(),
-    );
+    return body();
   }
 
-  Widget body() {
-    Widget future = futureWidget();
-    if (noData) {
-      return LogInPage(title: 'Login');
-    }
-
-    return future;
-  }
-
-  FutureBuilder futureWidget() {
+  FutureBuilder body() {
     return FutureBuilder<User>(
       future: Provider.of<FireAuthService>(context).currentUser(),
       builder: (context, AsyncSnapshot<User> snapshot) {
@@ -47,8 +33,7 @@ class _FirebaseAuthLoginState extends State<FirebaseAuthLogin> {
             return UserProfilePage(context, snapshot.data);
           }
 
-          noData = true;
-          return Container();
+          return LogInPage(title: 'Login');
         } else {
           return Container(
             child: CircularProgressIndicator(),

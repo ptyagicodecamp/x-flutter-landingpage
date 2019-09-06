@@ -1,7 +1,6 @@
 import 'package:flutter_web/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/strings.dart';
-import 'package:landingpage/utils/widgets_lib.dart';
 import 'package:landingpage/widgets/emailBox.dart';
 
 class LargeScreen extends StatelessWidget {
@@ -10,8 +9,11 @@ class LargeScreen extends StatelessWidget {
     return SizedBox(
       height: 600,
       child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[addBackground(), addWelcomeText(context)],
+        fit: StackFit.loose,
+        children: <Widget>[
+          addBackground(),
+          addWelcomeText(context),
+        ],
       ),
     );
   }
@@ -21,11 +23,10 @@ class LargeScreen extends StatelessWidget {
     return FractionallySizedBox(
       alignment: Alignment.centerRight, //to keep images aligned to right
       widthFactor: .6, //covers about 60% of the screen width
-      child: Image.asset(Strings.backgroundImage),
-//      child: Image.asset(
-//        Strings.backgroundImage,
-//        scale: .85,
-//      ),
+      child: Image.asset(
+        Strings.backgroundImage,
+        scale: .85,
+      ),
     );
   }
 
@@ -64,21 +65,21 @@ class LargeScreen extends StatelessWidget {
                       ]),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 12.0, top: 20),
+                  padding: EdgeInsets.only(left: 12.0, top: 10),
                   child: Text(Strings.subscribeText),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 200,
                 ), //Give some spacing
                 EmailBox(),
               ],
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: factBot(context),
-        ),
+//        Padding(
+//          padding: EdgeInsets.all(8.0),
+//          child: factBot(context),
+//        ),
       ],
     );
   }

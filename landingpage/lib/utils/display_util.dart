@@ -1,7 +1,7 @@
-enum NavLinks { Home, Github, Videos, Jobs, LogIn }
+enum NavLinks { Home, Github, Videos, Jobs, LogIn, Resources }
 
 String displayString(NavLinks link) {
-  switch(link) {
+  switch (link) {
     case NavLinks.Home:
       return "Home";
       break;
@@ -21,14 +21,17 @@ String displayString(NavLinks link) {
       return "LogIn";
       break;
 
+    case NavLinks.Resources:
+      return "Resources";
+      break;
+
     default:
       return "";
-
   }
 }
 
 String linkUrl(NavLinks link) {
-  switch(link) {
+  switch (link) {
     case NavLinks.Home:
       return "https://flutter-to-fly.web.app/";
       break;
@@ -46,6 +49,5 @@ String linkUrl(NavLinks link) {
 
     default:
       return "";
-
   }
 }

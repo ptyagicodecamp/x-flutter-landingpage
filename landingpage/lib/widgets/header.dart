@@ -3,6 +3,7 @@ import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/strings.dart';
+import 'dart:html' as html;
 
 import '../utils/display_util.dart';
 
@@ -56,9 +57,13 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     }
   }
 
+  bool isNotNavLinksLogin(link) {
+    return link != NavLinks.LogIn;
+  }
+
   //Builds navigation list for header
   List<Widget> getLinksListing(BuildContext context) {
-    return NavLinks.values.map((link) {
+    return NavLinks.values.where((link) => link != NavLinks.LogIn).map((link) {
       return Padding(
           padding: EdgeInsets.only(left: 18),
           child: InkWell(
@@ -78,10 +83,11 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   }
 
   void openLink(NavLinks link) {
-    print("open link:" + link.toString());
-//    if (!MyPlatform.isMobile()) {
-//      //js.context.callMethod("open", [getTargetUrl(link)]);
-//    }
+    if (link == NavLinks.Resources) {
+      //open Resource page
+    } else {
+      html.window.open(getTargetUrl(link), displayString(link));
+    }
   }
 
   String getTargetUrl(NavLinks link) {
@@ -158,20 +164,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         Container(
           width: 50,
           height: 50,
-//          decoration: BoxDecoration(
-//            borderRadius: BorderRadius.circular(18),
-//            gradient: LinearGradient(colors: [
-//              Theme.of(context).primaryColor,
-//              Theme.of(context).secondaryHeaderColor
-//            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
-//          ),
           child: Center(
             child: Image.asset('images/bird.jpg'),
-//            child: Text(
-//              Strings.logoTitle,
-//              style: Theme.of(context).textTheme.title,
-//              //style: TextStyle(fontSize: 30, color: MyColors.white1),
-//            ),
           ),
         ),
         //give some space between logo box and title
