@@ -3,9 +3,24 @@
         "family": "Indie Flower",
         "fonts": [
             {
-                "asset": "IndieFlower.ttf"
+                "asset": "fonts/IndieFlower.ttf"
             }
         ]
+    },
+    {
+        "family": "Roboto",
+        "fonts": [
+            {
+                "asset": "fonts/Roboto-Regular.ttf"
+            }
+        ]
+    },
+    {
+        "fonts": [
+            {
+                "asset": "fonts/MaterialIcons-Regular.ttf"
+            }
+        ],
+        "family": "MaterialIcons"
     }
-
 ]

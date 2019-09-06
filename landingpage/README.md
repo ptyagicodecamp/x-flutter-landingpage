@@ -1,12 +1,14 @@
-#Implementing Flutter FactsBot using DialogFlow
+#Implementing Login in Flutter Web (Hummingbird)
 
-Read article here: [Implementing Flutter FactsBot using DialogFlow](https://ptyagicodecamp.github.io/implementing-flutter-factsbot-using-dialogflow.html)
+Read article here: [Implementing Login in Flutter Web (Hummingbird)]()
 
-Source code is available [here](https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/flutter-facts-native)
+* Hummingbird / Flutter Web implementation's source code is [available here](https://github.com/ptyagicodecamp/x-flutter-landingpage/tree/login-web)
+* Android & iOS implementation's source code is [available here](https://github.com/ptyagicodecamp/flutter_cookbook/tree/widgets/flutter_widgets/lib/login)
+
+
+## Image Credits:
+[Bird logo](https://www.vecteezy.com/vector-art/604578-hummingbird-icon-logo-and-symbols-template-vector)
+[Landing page image](https://icons8.com/ouch/illustration/fogg-page-under-construction)
 
 Follow me at twitter: @ptyagi13
 Medium: @ptyagicodecamp
-
-##Credits:
-[Bird logo](https://www.vecteezy.com/vector-art/604578-hummingbird-icon-logo-and-symbols-template-vector)
-[Landing page image]()

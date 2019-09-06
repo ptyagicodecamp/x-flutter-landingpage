@@ -18,10 +18,6 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
       return MaterialPageRoute(builder: (context) => MyHomePage());
       break;
 
-//    case FACTS_DIALOGFLOW:
-//      return MaterialPageRoute(builder: (context) => FlutterFactsDialogFlow());
-//      break;
-//
     case FIREBASE_LOGIN:
       return MaterialPageRoute(builder: (context) {
         return ChangeNotifierProvider<FireAuthService>(
