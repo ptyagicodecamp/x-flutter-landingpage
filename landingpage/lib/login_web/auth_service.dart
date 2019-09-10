@@ -18,18 +18,19 @@ abstract class BaseAuthService with ChangeNotifier {
 class FireAuthService extends BaseAuthService {
   final Auth _firebaseAuth = fb.auth();
 
+  //Get currently logged-in user
   @override
   Future<User> currentUser() async {
     return await _firebaseAuth.currentUser;
   }
 
+  //Sign-in using email and password, notifies all subscribers.
   @override
   Future<User> signIn(String email, String password) async {
     try {
       var auth =
           await _firebaseAuth.signInWithEmailAndPassword(email, password);
-      var updated = updateUser(auth.user);
-      print("Tyagi: " + updated.toString());
+
       notifyListeners();
       return auth.user;
     } catch (e) {
@@ -37,11 +38,23 @@ class FireAuthService extends BaseAuthService {
     }
   }
 
+  //This method is called from register form. A user account is created in FirebaseAuth
   @override
-  Future<User> googleSignIn() async {
-    //TODO
+  Future<User> createUser(
+      String firstName, String lastName, String email, String password) async {
+    var auth =
+        await _firebaseAuth.createUserWithEmailAndPassword(email, password);
+
+    var info = fb.UserProfile();
+    info.displayName = '$firstName $lastName';
+    await auth.user.updateProfile(info);
+
+    updateUser(auth.user);
+
+    return auth.user;
   }
 
+  //A record is created at Firestore to keep track of all personalized data for each user.
   @override
   Future<User> updateUser(User user) async {
     final CollectionReference ref = fb.firestore().collection('users');
@@ -67,37 +80,18 @@ class FireAuthService extends BaseAuthService {
 
     await ref.doc(user.uid).set(newData, SetOptions(merge: true));
 
-//    await ref.doc('ptyagi').set(newData);
-//
-//    var map = {"text": "hello", "createdAt": DateTime.now()};
-//
-//    try {
-//      await ref.add(map);
-//    } catch (e) {
-//      print("Error while writing document, $e");
-//    }
-
     return user;
   }
 
-  @override
-  Future<User> createUser(
-      String firstName, String lastName, String email, String password) async {
-    var auth =
-        await _firebaseAuth.createUserWithEmailAndPassword(email, password);
-
-    var info = fb.UserProfile();
-    info.displayName = '$firstName $lastName';
-    await auth.user.updateProfile(info);
-
-    updateUser(auth.user);
-
-    return auth.user;
-  }
-
+  //Sign-out
   @override
   Future<void> signOut() async {
     _firebaseAuth.signOut();
     notifyListeners();
+  }
+
+  @override
+  Future<User> googleSignIn() async {
+    //TODO
   }
 }

@@ -23,7 +23,6 @@ dependencies:
   service_worker: ^0.2.0
   googleapis_auth: ^0.2.3+5
   provider: any
-  #google_sign_in: ^4.0.7
 
 dev_dependencies:
   #dependencies to enable the Dart web build system

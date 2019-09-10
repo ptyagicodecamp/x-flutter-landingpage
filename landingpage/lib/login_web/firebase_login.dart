@@ -14,7 +14,6 @@ class FirebaseAuthLogin extends StatefulWidget {
 }
 
 class _FirebaseAuthLoginState extends State<FirebaseAuthLogin> {
-  static bool noData = false;
   @override
   Widget build(BuildContext context) {
     return body();
