@@ -85,6 +85,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   void openLink(NavLinks link) {
     if (link == NavLinks.Resources) {
       //open Resource page
+      Navigator.pushNamed(context, router.FLUTTER_RESOURCES);
     } else {
       html.window.open(getTargetUrl(link), displayString(link));
     }

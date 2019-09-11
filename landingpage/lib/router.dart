@@ -1,6 +1,7 @@
 //import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase/firebase.dart';
 import 'package:flutter_web/material.dart';
+import 'package:landingpage/rss_web/reources.dart';
 import 'package:provider/provider.dart';
 
 import 'home.dart';
@@ -11,11 +12,16 @@ import 'login_web/user_profile.dart';
 const String FACTS_DIALOGFLOW = "FACTS_DIALOGFLOW";
 const String FIREBASE_LOGIN = 'FIREBASE_LOGIN';
 const String USER_PROFILE = 'USER_PROFILE';
+const String FLUTTER_RESOURCES = 'FLUTTER_RESOURCES';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
     case '/':
       return MaterialPageRoute(builder: (context) => MyHomePage());
+      break;
+
+    case FLUTTER_RESOURCES:
+      return MaterialPageRoute(builder: (context) => FlutterResources());
       break;
 
     case FIREBASE_LOGIN:

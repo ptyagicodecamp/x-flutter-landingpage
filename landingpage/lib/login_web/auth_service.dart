@@ -1,8 +1,8 @@
 import 'dart:async';
 
 import 'package:firebase/firebase.dart' as fb;
+import 'package:firebase/firebase.dart';
 import 'package:firebase/firestore.dart';
-import 'package:firebase/src/auth.dart';
 import 'package:flutter_web/foundation.dart';
 
 abstract class BaseAuthService with ChangeNotifier {
