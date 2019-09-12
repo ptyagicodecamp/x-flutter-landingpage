@@ -2,6 +2,7 @@ import 'package:flutter_web/material.dart';
 import 'package:intl/intl.dart';
 import 'dart:html' as html;
 import 'dart:convert';
+import 'package:html_unescape/html_unescape.dart';
 
 import 'rss_service.dart';
 
@@ -19,6 +20,8 @@ class FlutterResources extends StatelessWidget {
   }
 
   FutureBuilder showListing() {
+    var unescape = new HtmlUnescape();
+
     return FutureBuilder(
       future: RssService().getFeed(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -32,8 +35,11 @@ class FlutterResources extends StatelessWidget {
                     itemBuilder: (BuildContext ctxt, int index) {
                       final item = feed.items[index];
                       return ListTile(
-                        title: Text(item.title),
-                        subtitle: Text(htmlEscape.convert(item.summary)),
+                        title: Text(
+                          item.title,
+                          style: TextStyle(fontFamily: 'Roboto', fontSize: 20),
+                        ),
+                        leading: Icon(Icons.star_border),
                         contentPadding: EdgeInsets.all(16.0),
                         onTap: () async {
                           openLink(item.id);
