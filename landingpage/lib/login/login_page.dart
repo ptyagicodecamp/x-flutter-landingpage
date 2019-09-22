@@ -1,15 +1,18 @@
 import 'package:firebase/firebase.dart';
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:landingpage/plugins/firebase/change_notifier.dart';
+import 'package:landingpage/plugins/firebase/fire_auth_service.dart';
 import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/widgets_lib.dart';
 import 'package:provider/provider.dart';
 
-import 'auth_service.dart';
-
 class LogInPage extends StatefulWidget {
   final String title;
-  LogInPage({Key key, this.title}) : super(key: key);
+  final void Function(MyAuthUser) onSignIn;
+
+  LogInPage({Key key, this.title, this.onSignIn}) : super(key: key);
 
   @override
   _LogInPageState createState() => new _LogInPageState();
@@ -110,7 +113,7 @@ class _LogInPageState extends State<LogInPage> {
       //hides keyboard
       FocusScope.of(context).requestFocus(new FocusNode());
       try {
-        User firebaseUser = _formType == FormType.login
+        MyAuthUser firebaseUser = _formType == FormType.login
             ? await Provider.of<FireAuthService>(context)
                 .signIn(_email, _password)
             : await Provider.of<FireAuthService>(context)

@@ -1,11 +1,9 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/strings.dart';
 
 class SubscribeButton extends StatelessWidget {
-  var emailImage = "images/email.png";
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
@@ -62,7 +60,7 @@ class SubscribeButton extends StatelessWidget {
               : ResponsiveWidget.isMediumScreen(context) ? 6 : 8,
         ),
         Image.asset(
-          emailImage,
+          Strings.emailImage,
           color: MyColors.white1,
           width: ResponsiveWidget.isSmallScreen(context)
               ? 12
@@ -80,7 +78,7 @@ class SubscribeButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Image.asset(
-          emailImage,
+          Strings.emailImage,
           color: MyColors.white1,
           width: ResponsiveWidget.isSmallScreen(context)
               ? 12

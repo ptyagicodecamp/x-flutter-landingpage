@@ -1,9 +1,10 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
+import 'package:landingpage/plugins/url_launcher/url_launcher.dart';
 import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/myColors.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/strings.dart';
-import 'dart:html' as html;
+//import 'dart:html' as html;
 
 import '../utils/display_util.dart';
 
@@ -87,7 +88,8 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       //open Resource page
       Navigator.pushNamed(context, router.FLUTTER_RESOURCES);
     } else {
-      html.window.open(getTargetUrl(link), displayString(link));
+      UrlUtils.open(getTargetUrl(link), name: displayString(link));
+      //html.window.open(getTargetUrl(link), displayString(link));
     }
   }
 
@@ -115,7 +117,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       default:
         url = "https://flutter-to-fly.firebaseapp.com";
     }
-    print("url: " + url);
+
     return url;
   }
 
@@ -166,7 +168,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
           width: 50,
           height: 50,
           child: Center(
-            child: Image.asset('images/bird.jpg'),
+            child: Image.asset(Strings.logoImage),
           ),
         ),
         //give some space between logo box and title

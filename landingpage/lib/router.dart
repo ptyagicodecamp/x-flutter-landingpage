@@ -1,14 +1,14 @@
-//import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase/firebase.dart';
-import 'package:flutter_web/material.dart';
-import 'package:landingpage/rss_web/reources.dart';
+import 'package:flutter/material.dart';
+import 'package:landingpage/plugins/firebase/change_notifier.dart';
 import 'package:provider/provider.dart';
 
+import 'data/reources.dart';
 import 'home.dart';
-import 'login_web/auth_service.dart';
-import 'login_web/firebase_login.dart';
-import 'login_web/user_profile.dart';
+import 'login/firebase_login.dart';
+import 'login/user_profile.dart';
+import 'package:landingpage/plugins/firebase/fire_auth_service.dart';
 
+const String HOME = '/';
 const String FACTS_DIALOGFLOW = "FACTS_DIALOGFLOW";
 const String FIREBASE_LOGIN = 'FIREBASE_LOGIN';
 const String USER_PROFILE = 'USER_PROFILE';
@@ -16,7 +16,7 @@ const String FLUTTER_RESOURCES = 'FLUTTER_RESOURCES';
 
 Route<dynamic> generateRoute(RouteSettings routeSettings) {
   switch (routeSettings.name) {
-    case '/':
+    case HOME:
       return MaterialPageRoute(builder: (context) => MyHomePage());
       break;
 
@@ -37,9 +37,13 @@ Route<dynamic> generateRoute(RouteSettings routeSettings) {
 
     case USER_PROFILE:
       return MaterialPageRoute(builder: (context) {
-        final User firebaseUser = routeSettings.arguments;
+        final MyAuthUser firebaseUser = routeSettings.arguments;
         return ChangeNotifierProvider<FireAuthService>(
-          child: UserProfilePage(context, firebaseUser),
+          child: UserProfilePage(
+              currentUser: firebaseUser,
+              onSignOut: () {
+                Navigator.pushNamed(context, HOME);
+              }),
           builder: (BuildContext context) {
             return FireAuthService();
           },

@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 
 import 'large_screen.dart';

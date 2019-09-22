@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 
 class MyColors {
   static const Color white1 = Color(0xFFF8FBFF);
@@ -17,7 +17,6 @@ class MyColors {
   static Color purple1 = Colors.purple[800];
   static Color purple2 = Colors.purple[300];
   static const Color purple3 = Colors.purpleAccent;
-
 
   static const Color orange1 = Colors.deepOrange;
   static const Color orange2 = Colors.orange;

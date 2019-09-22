@@ -1,9 +1,11 @@
 import 'package:firebase/firebase.dart';
-import 'package:flutter_web/material.dart';
-import 'package:landingpage/login_web/auth_service.dart';
-import 'package:landingpage/login_web/login_page.dart';
-import 'package:landingpage/login_web/user_profile.dart';
+import 'package:flutter/material.dart';
+import 'package:landingpage/login/login_page.dart';
+import 'package:landingpage/login/user_profile.dart';
+import 'package:landingpage/plugins/firebase/change_notifier.dart';
+import 'package:landingpage/plugins/firebase/fire_auth_service.dart';
 import 'package:provider/provider.dart';
+import 'package:landingpage/router.dart' as router;
 
 //user Firebase Auth to login using Google account credentials
 class FirebaseAuthLogin extends StatefulWidget {
@@ -14,22 +16,27 @@ class FirebaseAuthLogin extends StatefulWidget {
 }
 
 class _FirebaseAuthLoginState extends State<FirebaseAuthLogin> {
+  static MyAuthUser user;
+
   @override
   Widget build(BuildContext context) {
     return body();
   }
 
   FutureBuilder body() {
-    return FutureBuilder<User>(
+    return FutureBuilder<MyAuthUser>(
       future: Provider.of<FireAuthService>(context).currentUser(),
-      builder: (context, AsyncSnapshot<User> snapshot) {
+      builder: (context, AsyncSnapshot<MyAuthUser> snapshot) {
         if (snapshot.connectionState == ConnectionState.done) {
           if (snapshot.error != null) {
             return Text(snapshot.error.toString());
           }
 
           if (snapshot.hasData) {
-            return UserProfilePage(context, snapshot.data);
+            user = snapshot.data;
+
+            return UserProfilePage(
+                currentUser: user, onSignOut: () => signOut());
           }
 
           return LogInPage(title: 'Login');
@@ -40,5 +47,9 @@ class _FirebaseAuthLoginState extends State<FirebaseAuthLogin> {
         }
       },
     );
+  }
+
+  void signOut() {
+    Navigator.popAndPushNamed(context, router.HOME);
   }
 }

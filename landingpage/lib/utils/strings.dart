@@ -11,5 +11,8 @@ class Strings {
   static const String subscribeButton = "Subscribe";
 
 //  static const String backgroundImage = "assets/flutter_image.jpg";
-  static const String backgroundImage = "images/lego.png";
+  static const String backgroundImage = "assets/images/lego.png";
+  static const String logoImage = "assets/images/bird.jpg";
+  static const String emailImage = "assets/images/email.png";
+  static const String menuImage = "assets/images/menu.png";
 }

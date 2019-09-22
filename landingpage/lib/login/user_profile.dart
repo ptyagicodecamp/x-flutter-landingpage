@@ -1,15 +1,15 @@
-import 'package:firebase/firebase.dart';
-import 'package:flutter_web/material.dart';
-import 'package:landingpage/login_web/auth_service.dart';
+import 'package:flutter/material.dart';
+import 'package:landingpage/plugins/firebase/change_notifier.dart';
+import 'package:landingpage/plugins/firebase/fire_auth_service.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:provider/provider.dart';
 
 //user Firebase Auth to login using Google account credentials
 class UserProfilePage extends StatefulWidget {
-  final User currentUser;
-  final BuildContext _buildContext;
+  final MyAuthUser currentUser;
+  final VoidCallback onSignOut;
 
-  UserProfilePage(this._buildContext, this.currentUser);
+  UserProfilePage({this.currentUser, this.onSignOut});
 
   @override
   State<StatefulWidget> createState() {
@@ -24,8 +24,8 @@ class _UserProfilePageState extends State<UserProfilePage> {
   @override
   Widget build(BuildContext context) {
     if (widget.currentUser != null) {
-      if (widget.currentUser.photoURL != null) {
-        photoUrl = widget.currentUser.photoURL;
+      if (widget.currentUser.photoUrl != null) {
+        photoUrl = widget.currentUser.photoUrl;
       }
       if (widget.currentUser.displayName != null) {
         displayName = widget.currentUser.displayName;

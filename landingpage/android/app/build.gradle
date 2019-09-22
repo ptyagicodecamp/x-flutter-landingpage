@@ -62,6 +62,7 @@ android {
             signingConfig signingConfigs.release
         }
     }
+    buildToolsVersion = '28.0.3'
 }
 
 flutter {

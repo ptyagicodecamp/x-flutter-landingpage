@@ -1,4 +1,4 @@
-import 'package:flutter_web/material.dart';
+import 'package:flutter/material.dart';
 
 class FactsMessage extends StatelessWidget {
   FactsMessage({this.text, this.name, this.type});

@@ -1,8 +1,8 @@
-import 'package:flutter_web/material.dart';
-import 'package:intl/intl.dart';
-import 'dart:html' as html;
+import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
+import 'package:landingpage/plugins/url_launcher/url_launcher.dart';
 import 'dart:convert';
-import 'package:html_unescape/html_unescape.dart';
+//import 'package:url_launcher/url_launcher.dart';
 
 import 'rss_service.dart';
 
@@ -20,8 +20,6 @@ class FlutterResources extends StatelessWidget {
   }
 
   FutureBuilder showListing() {
-    var unescape = new HtmlUnescape();
-
     return FutureBuilder(
       future: RssService().getFeed(),
       builder: (BuildContext context, AsyncSnapshot snapshot) {
@@ -71,6 +69,7 @@ class FlutterResources extends StatelessWidget {
   void openLink(String url) {
     var substr = url.toString().split(":");
     var myUrl = "https://ptyagicodecamp.github.io" + substr[2];
-    html.window.open(myUrl, "Flutter Resources");
+    UrlUtils.open(myUrl);
+    //html.window.open(myUrl, "Flutter Resources");
   }
 }
