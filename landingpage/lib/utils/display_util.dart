@@ -1,4 +1,4 @@
-enum NavLinks { Home, Github, Videos, Jobs, LogIn, Resources }
+enum NavLinks { Home, Github, Videos, Resources, Jobs, LogIn }
 
 String displayString(NavLinks link) {
   switch (link) {

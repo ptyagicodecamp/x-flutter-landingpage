@@ -68,12 +68,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
                   style: TextStyle(
                       fontFamily: 'Montserrat-Regular', fontSize: 20))),
           const PopupMenuItem(
-              value: NavLinks.Jobs,
+              value: NavLinks.Resources,
               child: Text("Resources",
                   style: TextStyle(
                       fontFamily: 'Montserrat-Regular', fontSize: 20))),
           const PopupMenuItem(
-              value: NavLinks.Resources,
+              value: NavLinks.Jobs,
               child: Text("Jobs",
                   style: TextStyle(
                       fontFamily: 'Montserrat-Regular', fontSize: 20))),

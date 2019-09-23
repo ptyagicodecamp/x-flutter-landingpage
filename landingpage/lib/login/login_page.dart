@@ -1,8 +1,7 @@
-import 'package:firebase/firebase.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/widgets.dart';
-import 'package:landingpage/plugins/firebase/change_notifier.dart';
-import 'package:landingpage/plugins/firebase/fire_auth_service.dart';
+import 'package:landingpage/plugins/firetop/change_notifier.dart';
+import 'package:landingpage/plugins/firetop/fire_auth_service.dart';
 import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/widgets_lib.dart';

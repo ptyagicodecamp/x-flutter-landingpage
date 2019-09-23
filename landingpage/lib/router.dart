@@ -1,12 +1,12 @@
 import 'package:flutter/material.dart';
-import 'package:landingpage/plugins/firebase/change_notifier.dart';
+import 'package:landingpage/plugins/firetop/change_notifier.dart';
 import 'package:provider/provider.dart';
 
 import 'data/reources.dart';
 import 'home.dart';
 import 'login/firebase_login.dart';
 import 'login/user_profile.dart';
-import 'package:landingpage/plugins/firebase/fire_auth_service.dart';
+import 'package:landingpage/plugins/firetop/fire_auth_service.dart';
 
 const String HOME = '/';
 const String FACTS_DIALOGFLOW = "FACTS_DIALOGFLOW";
