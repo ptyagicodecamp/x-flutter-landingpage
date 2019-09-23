@@ -23,7 +23,7 @@ dependencies:
   #firebase_auth: ^0.14.0+4 #user auth
   cloud_firestore: ^0.12.9+1 #saving user profiles
 
-  firebase: ^5.0.4
+  #firebase: ^5.0.4
   fb_auth: any
 
   universal_html: ^1.1.0
@@ -65,6 +65,9 @@ flutter:
     - family: Montserrat-Regular
       fonts:
         - asset: assets/fonts/Montserrat-Regular.ttf
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
 
 
 

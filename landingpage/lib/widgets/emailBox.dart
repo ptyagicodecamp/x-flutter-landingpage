@@ -31,7 +31,9 @@ class EmailBox extends StatelessWidget {
                 flex: 8,
                 child: TextField(
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: Strings.email_hint),
+                      border: InputBorder.none,
+                      hintText: Strings.email_hint,
+                      hintStyle: TextStyle(fontFamily: 'Fresca', fontSize: 18)),
                 ),
               ),
               Expanded(
