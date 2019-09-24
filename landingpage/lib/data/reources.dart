@@ -38,6 +38,7 @@ class FlutterResources extends StatelessWidget {
   void openLink(String url) {
     var substr = url.toString().split(":");
     var myUrl = "https://ptyagicodecamp.github.io" + substr[2];
+
     UrlUtils.open(myUrl);
   }
 }
