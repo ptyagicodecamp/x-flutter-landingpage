@@ -11,7 +11,7 @@ class MyAppThemes {
       accentColor: MyColors.blue3,
 
       // I used custom font for the default font family.
-      fontFamily: 'Indie Flower',
+      fontFamily: 'Montserrat-Regular',
 
       textTheme: getDefaultTextTheme(context),
     );
@@ -25,6 +25,7 @@ class MyAppThemes {
       secondaryHeaderColor: MyColors.green2,
       accentColor: MyColors.green3,
 
+      fontFamily: 'Fresca',
       textTheme: getItalicTitleTextTheme(context),
     );
   }

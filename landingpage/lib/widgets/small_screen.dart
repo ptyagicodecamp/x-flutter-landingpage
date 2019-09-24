@@ -48,7 +48,10 @@ class SmallScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 12.0, top: 20),
-                  child: Text(Strings.subscribeText),
+                  child: Text(
+                    Strings.subscribeText,
+                    style: TextStyle(fontFamily: 'Indie Flower'),
+                  ),
                 ),
                 SizedBox(
                   height: 30,

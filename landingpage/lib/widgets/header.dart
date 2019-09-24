@@ -205,7 +205,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         ),
         Text(
           Strings.appTitle,
-          style: TextStyle(fontSize: 26),
+          style: TextStyle(fontFamily: 'Indie Flower', fontSize: 26),
         )
       ],
     );
