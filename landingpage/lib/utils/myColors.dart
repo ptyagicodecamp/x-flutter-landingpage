@@ -18,7 +18,6 @@ class MyColors {
   static Color purple2 = Colors.purple[300];
   static const Color purple3 = Colors.purpleAccent;
 
-
   static const Color orange1 = Colors.deepOrange;
   static const Color orange2 = Colors.orange;
   static const Color orange3 = Colors.orangeAccent;

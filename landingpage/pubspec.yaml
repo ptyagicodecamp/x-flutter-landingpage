@@ -1,16 +1,6 @@
 name: landingpage
 description: Cross platform sample landing page implemented in Flutter
 
-# The following defines the version and build number for your application.
-# A version number is three numbers separated by dots, like 1.2.43
-# followed by an optional build number separated by a +.
-# Both the version and the builder number may be overridden in flutter
-# build by specifying --build-name and --build-number, respectively.
-# In Android, build-name is used as versionName while build-number used as versionCode.
-# Read more about Android versioning at https://developer.android.com/studio/publish/versioning
-# In iOS, build-name is used as CFBundleShortVersionString while build-number used as CFBundleVersion.
-# Read more about iOS versioning at
-# https://developer.apple.com/library/archive/documentation/General/Reference/InfoPlistKeyReference/Articles/CoreFoundationKeys.html
 version: 1.0.0+1
 
 environment:
@@ -23,7 +13,23 @@ dependencies:
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^0.1.2
-  flutter_dialogflow: ^0.1.2
+ # flutter_dialogflow: any #^0.1.2
+  webview_flutter: ^0.3.10+3
+
+  #firebase auth for Google SignIn
+  google_sign_in: ^4.0.7 #google signin
+  provider: ^3.1.0 #ChangeNotifier, Consumer, Providers
+  #firebase_core: ^0.4.0+9
+  #firebase_auth: ^0.14.0+4 #user auth
+  cloud_firestore: ^0.12.9+1 #saving user profiles
+
+  #firebase: ^5.0.4
+  fb_auth: any
+
+  universal_html: ^1.1.0
+  url_launcher: ^5.1.2
+  #http: ^0.12.0+2
+  webfeed: ^0.4.2
 
 dev_dependencies:
   flutter_test:
@@ -43,15 +49,27 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/email.png
-    - assets/flutter_image.jpg
-    - assets/menu.png
     - assets/flutter-to-fly-creds.json
+    - assets/images/
 
   fonts:
     - family: Indie Flower
       fonts:
-        - asset: fonts/IndieFlower.ttf
+        - asset: assets/fonts/IndieFlower.ttf
+    - family: Fresca
+      fonts:
+        - asset: assets/fonts/Fresca-Regular.ttf
+    - family: Montserrat-Medium
+      fonts:
+        - asset: assets/fonts/Montserrat-Medium.ttf
+    - family: Montserrat-Regular
+      fonts:
+        - asset: assets/fonts/Montserrat-Regular.ttf
+    - family: Roboto-Regular
+      fonts:
+        - asset: assets/fonts/Roboto-Regular.ttf
+
+
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

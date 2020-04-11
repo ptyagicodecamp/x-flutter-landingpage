@@ -1,9 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:landingpage/plugins/url_launcher/url_launcher.dart';
+import 'package:landingpage/router.dart' as router;
 import 'package:landingpage/utils/myColors.dart';
-import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
-//import 'dart:js' as js;
-import 'package:landingpage/utils/my_platform.dart';
+import 'package:landingpage/utils/strings.dart';
+//import 'dart:html' as html;
+
 import '../utils/display_util.dart';
 
 class HeaderWidget extends StatefulWidget {
@@ -39,36 +41,69 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     } else {
       return PopupMenuButton(
         //child: Image.network("assets/menu.png", width: 25, height: 25),
-        child: Image.asset("assets/menu.png", width: 25, height: 25),
+        child: Image.asset(Strings.menuImage, width: 25, height: 25),
         onSelected: (NavLinks value) {
           setState(() {
             openLink(value);
           });
         },
         itemBuilder: (BuildContext context) => <PopupMenuEntry<NavLinks>>[
-          const PopupMenuItem(value: NavLinks.Home, child: Text("Home")),
-          const PopupMenuItem(value: NavLinks.Github, child: Text("Github")),
-          const PopupMenuItem(value: NavLinks.Videos, child: Text("Videos")),
-          const PopupMenuItem(value: NavLinks.Jobs, child: Text("Jobs")),
+          const PopupMenuItem(
+              value: NavLinks.Home,
+              child: Text(
+                "Home",
+                style:
+                    TextStyle(fontFamily: 'Montserrat-Regular', fontSize: 20),
+              )),
+          const PopupMenuItem(
+              value: NavLinks.Github,
+              child: Text(
+                "Github",
+                style:
+                    TextStyle(fontFamily: 'Montserrat-Regular', fontSize: 20),
+              )),
+          const PopupMenuItem(
+              value: NavLinks.Videos,
+              child: Text("Videos",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat-Regular', fontSize: 20))),
+          const PopupMenuItem(
+              value: NavLinks.Resources,
+              child: Text("Resources",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat-Regular', fontSize: 20))),
+          const PopupMenuItem(
+              value: NavLinks.Jobs,
+              child: Text("Jobs",
+                  style: TextStyle(
+                      fontFamily: 'Montserrat-Regular', fontSize: 20))),
+          PopupMenuItem(value: NavLinks.LogIn, child: buildLoginButton(context))
         ],
       );
     }
   }
 
+  bool isNotNavLinksLogin(link) {
+    return link != NavLinks.LogIn;
+  }
+
   //Builds navigation list for header
   List<Widget> getLinksListing(BuildContext context) {
-    return NavLinks.values.map((link) {
+    return NavLinks.values.where((link) => link != NavLinks.LogIn).map((link) {
       return Padding(
           padding: EdgeInsets.only(left: 18),
           child: InkWell(
               hoverColor: Theme.of(context).primaryColor,
               highlightColor: Theme.of(context).secondaryHeaderColor,
               splashColor: Theme.of(context).primaryColor,
-              borderRadius: BorderRadius.circular(10.0),
+              borderRadius: BorderRadius.circular(20.0),
               child: Text(
                 displayString(link),
-                style: Theme.of(context).textTheme.title,
-                //style: TextStyle(fontSize: 15, fontWeight: FontWeight.bold),
+                //style: Theme.of(context).textTheme.title,
+                style: TextStyle(
+                    fontFamily: 'Montserrat-Regular',
+                    fontSize: 20,
+                    fontStyle: FontStyle.normal),
               ),
               onTap: () {
                 openLink(link);
@@ -77,9 +112,12 @@ class _HeaderWidgetState extends State<HeaderWidget> {
   }
 
   void openLink(NavLinks link) {
-    print("open link:" + link.toString());
-    if (!MyPlatform.isMobile()) {
-      //js.context.callMethod("open", [getTargetUrl(link)]);
+    if (link == NavLinks.Resources) {
+      //open Resource page
+      Navigator.pushNamed(context, router.FLUTTER_RESOURCES);
+    } else {
+      UrlUtils.open(getTargetUrl(link), name: displayString(link));
+      //html.window.open(getTargetUrl(link), displayString(link));
     }
   }
 
@@ -107,7 +145,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
       default:
         url = "https://flutter-to-fly.firebaseapp.com";
     }
-    print("url: " + url);
+
     return url;
   }
 
@@ -116,6 +154,9 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     return Padding(
       padding: EdgeInsets.all(8.0),
       child: InkWell(
+        onTap: () {
+          Navigator.pushNamed(context, router.FIREBASE_LOGIN);
+        },
         child: Container(
           margin: EdgeInsets.only(left: 20),
           width: 120,
@@ -152,21 +193,10 @@ class _HeaderWidgetState extends State<HeaderWidget> {
     return Row(
       children: <Widget>[
         Container(
-          width: 60,
-          height: 60,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.circular(18),
-            gradient: LinearGradient(colors: [
-              Theme.of(context).primaryColor,
-              Theme.of(context).secondaryHeaderColor
-            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
-          ),
+          width: 50,
+          height: 50,
           child: Center(
-            child: Text(
-              Strings.logoTitle,
-              style: Theme.of(context).textTheme.title,
-              //style: TextStyle(fontSize: 30, color: MyColors.white1),
-            ),
+            child: Image.asset(Strings.logoImage),
           ),
         ),
         //give some space between logo box and title
@@ -175,7 +205,7 @@ class _HeaderWidgetState extends State<HeaderWidget> {
         ),
         Text(
           Strings.appTitle,
-          style: TextStyle(fontSize: 26),
+          style: TextStyle(fontFamily: 'Indie Flower', fontSize: 26),
         )
       ],
     );

@@ -1,9 +1,9 @@
 import 'package:flutter/material.dart';
-import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/myColors.dart';
-import '../router.dart';
-import 'emailBox.dart';
+import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/widgets_lib.dart';
+
+import 'emailBox.dart';
 
 class SmallScreen extends StatelessWidget {
   @override
@@ -48,7 +48,10 @@ class SmallScreen extends StatelessWidget {
                 ),
                 Padding(
                   padding: EdgeInsets.only(left: 12.0, top: 20),
-                  child: Text(Strings.subscribeText),
+                  child: Text(
+                    Strings.subscribeText,
+                    style: TextStyle(fontFamily: 'Indie Flower'),
+                  ),
                 ),
                 SizedBox(
                   height: 30,

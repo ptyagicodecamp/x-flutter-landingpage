@@ -1,21 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
-import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/responsive_widget.dart';
+import 'package:landingpage/utils/strings.dart';
 
 class SubscribeButton extends StatelessWidget {
-  var emailImage = "assets/email.png";
-
   @override
   Widget build(BuildContext context) {
     return InkWell(
       child: Container(
         height: 40,
         decoration: BoxDecoration(
-            gradient: LinearGradient(
-                colors: [Theme.of(context).primaryColor, Theme.of(context).secondaryHeaderColor],
-                begin: Alignment.bottomRight,
-                end: Alignment.topLeft),
+            gradient: LinearGradient(colors: [
+              Theme.of(context).primaryColor,
+              Theme.of(context).secondaryHeaderColor
+            ], begin: Alignment.bottomRight, end: Alignment.topLeft),
             borderRadius: BorderRadius.circular(20.0),
             boxShadow: [
               BoxShadow(
@@ -36,7 +34,6 @@ class SubscribeButton extends StatelessWidget {
     );
   }
 
-
   Widget buildButton(BuildContext context) {
     if (ResponsiveWidget.isSmallScreen(context))
       return buildSmallButton(context);
@@ -54,9 +51,7 @@ class SubscribeButton extends StatelessWidget {
               color: MyColors.white1,
               fontSize: ResponsiveWidget.isSmallScreen(context)
                   ? 12
-                  : ResponsiveWidget.isMediumScreen(context)
-                  ? 12
-                  : 16,
+                  : ResponsiveWidget.isMediumScreen(context) ? 12 : 16,
               letterSpacing: 1),
         ),
         SizedBox(
@@ -64,8 +59,8 @@ class SubscribeButton extends StatelessWidget {
               ? 4
               : ResponsiveWidget.isMediumScreen(context) ? 6 : 8,
         ),
-        Image.network(
-          emailImage,
+        Image.asset(
+          Strings.emailImage,
           color: MyColors.white1,
           width: ResponsiveWidget.isSmallScreen(context)
               ? 12
@@ -83,7 +78,7 @@ class SubscribeButton extends StatelessWidget {
       mainAxisAlignment: MainAxisAlignment.center,
       children: <Widget>[
         Image.asset(
-          emailImage,
+          Strings.emailImage,
           color: MyColors.white1,
           width: ResponsiveWidget.isSmallScreen(context)
               ? 12

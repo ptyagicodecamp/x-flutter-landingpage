@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:landingpage/utils/myColors.dart';
+import 'package:landingpage/utils/responsive_widget.dart';
 import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/widgets/susbcribe_button.dart';
-import 'package:landingpage/utils/responsive_widget.dart';
 
 class EmailBox extends StatelessWidget {
   @override
@@ -31,13 +31,15 @@ class EmailBox extends StatelessWidget {
                 flex: 8,
                 child: TextField(
                   decoration: InputDecoration(
-                      border: InputBorder.none, hintText: Strings.email_hint),
+                      border: InputBorder.none,
+                      hintText: Strings.email_hint,
+                      hintStyle: TextStyle(fontFamily: 'Fresca', fontSize: 18)),
                 ),
               ),
               Expanded(
                   flex: 2,
                   child:
-                  //Example of applying local themes to a certain widget in app
+                      //Example of applying local themes to a certain widget in app
                       Theme(
                     data: ThemeData(
                       primaryColor: MyColors.orange1,

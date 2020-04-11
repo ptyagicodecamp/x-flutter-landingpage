@@ -1,9 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/utils/myColors.dart';
+import 'package:landingpage/utils/strings.dart';
 import 'package:landingpage/widgets/emailBox.dart';
-
-import 'package:landingpage/utils/widgets_lib.dart';
 
 class LargeScreen extends StatelessWidget {
   @override
@@ -11,8 +9,11 @@ class LargeScreen extends StatelessWidget {
     return SizedBox(
       height: 600,
       child: Stack(
-        fit: StackFit.expand,
-        children: <Widget>[addBackground(), addWelcomeText(context)],
+        fit: StackFit.loose,
+        children: <Widget>[
+          addBackground(),
+          addWelcomeText(context),
+        ],
       ),
     );
   }
@@ -64,21 +65,24 @@ class LargeScreen extends StatelessWidget {
                       ]),
                 ),
                 Padding(
-                  padding: EdgeInsets.only(left: 12.0, top: 20),
-                  child: Text(Strings.subscribeText),
+                  padding: EdgeInsets.only(left: 12.0, top: 10),
+                  child: Text(
+                    Strings.subscribeText,
+                    style: TextStyle(fontFamily: 'Indie Flower'),
+                  ),
                 ),
                 SizedBox(
-                  height: 40,
+                  height: 200,
                 ), //Give some spacing
                 EmailBox(),
               ],
             ),
           ),
         ),
-        Padding(
-          padding: EdgeInsets.all(8.0),
-          child: factBot(context),
-        ),
+//        Padding(
+//          padding: EdgeInsets.all(8.0),
+//          child: factBot(context),
+//        ),
       ],
     );
   }
